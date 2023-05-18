@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="basic05_mvc:javaEEApplication exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/basic05_mvc_javaEEApplication_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="basic05_mvc/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>

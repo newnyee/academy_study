@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mem.xml -->
+<!-- 실행할 SQL 문을 정의해 놓은 파일 (DAO 클래스 역할) -->
+<!-- 주의 사항 : 종결문자 ; 생략해야 함 -->
+<mapper namespace="mem"> <!-- 대체적으로 namespace 이름은 테이블명과 같게 한다 -->
+
+    <!-- 파라미터 바인딩 표기법 #{property} -->
+    <!-- 물음표를 사용하지 않고 parameterType 객체의 멤버 변수를 바로 적용함 -->
+    <insert id="insertRow" parameterType="memDTO"> /* 사용시 mem.insertRow로 접근 */
+        INSERT INTO mem (num, name, age) VALUES (mem_seq.nextval, #{name} , #{age})
+    </insert>
+
+    <select id="selectAll" resultMap="rs">
+        SELECT num, name, age
+        FROM mem
+        ORDER BY num DESC
+    </select>
+
+    <update id="updateRow" parameterType="memDTO">
+        UPDATE mem
+        SET name = #{name}, age = #{age}
+        WHERE num = #{num}
+    </update>
+
+    <delete id="deleteRow" parameterType="int">
+        <![CDATA[ /* SQL 문에서 특수문자 <, >, / 등을 사용해야 하는 경우 */
+        DELETE FROM mem
+        WHERE age >= #{a} /* 매개값 40을 받을 변수 (a=40) */
+        ]]>
+    </delete>
+
+    <!-- 자주 사용하는 쿼리문 저장 -->
+    <sql id="tablename">
+        SELECT num, name, age
+        FROM mem
+    </sql>
+
+    <sql id="sort">
+        ORDER BY num DESC
+    </sql>
+
+    <select id="search" parameterType="String" resultMap="rs">
+        <include refid="tablename"/>
+        WHERE name LIKE '%'||#{keyword}||'%'
+        <include refid="sort"/>
+    </select>
+
+    <select id="selectRead" parameterType="int" resultType="net.mem.MemDTO"> /* 한줄 출력이기 때문에 객체 직접 사용 */
+        <![CDATA[
+        SELECT num, name, age
+        FROM mem
+        WHERE num = #{num}
+        ]]>
+    </select>
+
+    <select id="rowCount" resultType="Integer">
+         <![CDATA[
+        SELECT COUNT(*)
+        FROM mem
+        ]]>
+    </select>
+
+    <!-- ResultSet 에서 행 값을 가져와서 DTO 에 담고, ArrayList 에 추가하는 기능 -->
+    <!-- DB 에서 가져온 행 값을 객체에 매핑하는 방법을 정의-->
+    <!--RowMapper 역할-->
+    <resultMap type="net.mem.MemDTO" id="rs">
+        <result column="num" property="num"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+    </resultMap>
+
+</mapper>

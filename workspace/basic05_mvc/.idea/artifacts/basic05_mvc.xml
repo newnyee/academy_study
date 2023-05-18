@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="basic05_mvc">
+    <output-path>$PROJECT_DIR$/out/artifacts/basic05_mvc</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="basic05_mvc/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="basic05_mvc" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="ojdbc8" />
+          <element id="library" level="project" name="taglibs-standard-spec-1.2.5" />
+          <element id="library" level="project" name="taglibs-standard-impl-1.2.5" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: user
+Build-Jdk: Oracle OpenJDK version 17.0.7
+Implementation-Title: spring07_ajax
+Implementation-Version: ver_1
+Implementation-Vendor-Id: kr.co
+Main-Class: ${start-class}
+

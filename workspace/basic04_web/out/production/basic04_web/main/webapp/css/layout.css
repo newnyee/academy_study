@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@font-face {
+    font-family: 'LAB디지털';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/LAB디지털.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font: 20px Montserrat, sans-serif; /*nanumgothic, dotum, sans-serif*/
+    line-height: 1.8;
+    color: #f5f6f7;
+}
+p {font-size: 16px;}
+.margin {margin-bottom: 5px;}
+.bg-1 { 
+    background-color: rgb(24, 23, 23); /* Green */
+    color: #ffffff;
+}
+.bg-2 { 
+    background-color: #474e5d; /* Dark Blue */
+    color: #ffffff;
+}
+.bg-3 { 
+    background-color: #ffffff; /* White */
+    color: #555555;
+}
+.bg-4 { 
+    background-color: #2f2f2f; /* Black Gray */
+    color: #fff;
+}
+.container-fluid {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+}
+.navbar-nav  li a:hover {
+    color: #1abc9c !important;
+}
+h3 {
+    font: 20px 'LAB디지털', sans-serif;
+    margin-top: 20px;
+}
+.col-xs-12 {
+    position: relative;
+    left: 80px;
+    width:90%;
+    height:220px;
+    background-color: blue;
+    overflow: hidden; /*영역 이외의 부분은 숨기기*/
+    margin:0 auto;
+  }
+
+.image-thumbnail {
+    width:380px;
+    height:220px;
+    object-fit:cover;
+}
