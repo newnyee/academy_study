@@ -9,17 +9,10 @@
         VALUES (#{product_code}, PRODUCT_SEQ.nextval, #{content}, #{wname})
     </insert>
 
-    <select id="list" parameterType="int" resultMap="rs">
+    <select id="list" parameterType="int" resultType="kr.co.itwill.comment.CommentDTO">
         SELECT CNO, CONTENT, WNAME, REGDATE
         FROM PCOMMENT
         WHERE PRODUCT_CODE = #{product_code}
         ORDER BY REGDATE
     </select>
-
-    <resultMap id="rs" type="kr.co.itwill.comment.CommentDTO">
-        <result column="cno" property="cno"/>
-        <result column="content" property="content"/>
-        <result column="wname" property="wname"/>
-        <result column="regdate" property="regdate"/>
-    </resultMap>
 </mapper>
