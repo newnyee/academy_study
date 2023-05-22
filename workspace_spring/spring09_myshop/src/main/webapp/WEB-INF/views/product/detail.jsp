@@ -50,9 +50,9 @@
                 <tr>
                     <td class="success">상품사진</td>
                     <td>
-                        <c:if test="${product.FILENAME != '-'}">
-                            <img src="/storage/${product.FILENAME}" width="100px">
-                        </c:if>
+                    <c:if test="${product.FILENAME != '-'}">
+                        <img src="/storage/${product.FILENAME}" width="100px">
+                    </c:if>
                         <br>
                         <input class="form-control" type="file" name="img">
                     </td>
@@ -76,7 +76,7 @@
                         <label for="content">댓글</label>
                         <textarea class="form-control" rows="3" name="content" id="content" style="resize: none" placeholder="내용을 입력해 주세요"></textarea>
                     </div>
-                    <div style="text-align: right">
+                    <div style="text-align: right;">
                         <button class="btn btn-success" type="button" name="commentInsertBtn" id="commentInsertBtn">등록</button>
                     </div>
                 </div>
@@ -112,6 +112,7 @@
                     if (data === 1) { //댓글이 등록됐다면
                         commentList() //댓글 작성 후 댓글 목록 함수 호출
                         $('#content').val('') //기존 댓글 내용을 빈 문자열로 대입
+                        window.scrollTo({top:document.body.scrollHeight, left:0, behavior: "smooth"})
                     }
                 }
             })
@@ -126,13 +127,60 @@
                 success: (data)=>{
                     let a = ''
                     $.each(data, (key, value)=>{ //(인덱스, Object)
-                        a += value.content + "<br>"
-                        // alert(value.content)
-                        // alert(value.wname)
-                        // alert(value.regdate)
-                        // alert(value.product_code)
+                        a += '<div class="commemntArea">'
+                        a += '    <div class="commentContent' + value.cno + '">'
+                        a += '        <p>' + value.content + '</p>'
+                        a += '    </div>'
+                        a += '    <div class="commentInfo' + value.cno + '" style="color: darkgray;">'
+                        a += '        댓글번호: ' + value.cno + '&nbsp; |&nbsp; 작성자: ' + value.wname + "&nbsp; |&nbsp; " + value.regdate + "&nbsp; "
+                        a += '        <a href="javascript:commentUpdate(' + value.cno + ',\'' + value.content + '\')">수정</a>'
+                        a += '        <a href="javascript:commentDelete(' + value.cno + ')">삭제</a><hr>'
+                        a += '    </div>'
+                        a += '</div>'
                     })
                     $('.commentList').html(a)
+                }
+            })
+        }
+
+        // 댓글 수정 폼 - 댓글 내용 출력을 input 폼으로 변경
+        const commentUpdate = (cno, content) => {
+            let a = ''
+            a += '<div class="input-group">'
+            a += '    <input class="form-control" type="text" value="' + content + '" id="content_' + cno + '">'
+            a += '    <div class="input-group-btn">'
+            a += '        <button class="btn btn-default" type="button" onclick="commentUpdateProc(' + cno + ')">수정</button>'
+            a += '    </div>'
+            a += '</div><br>'
+            $('.commentContent' + cno).html(a)
+        }
+
+        // 댓글 수정 프로세스
+        const commentUpdateProc = (cno) => {
+            let updateContent = $('#content_' + cno).val()
+            $.ajax({
+                url:'/comment/update',
+                type:'post',
+                data:{"cno": cno, "content": updateContent},
+                success:(data)=>{
+                    if(data == 1) {
+                        alert("댓글 수정이 완료되었습니다")
+                        commentList()
+                    }
+                }
+            })
+        }
+
+        // 댓글 삭제
+        const commentDelete = (cno) => {
+            $.ajax({
+                url:'/comment/delete/' + cno,
+                type:'post',
+                success:(data)=>{
+                    if(data == 1) {
+                        alert("댓글이 삭제 되었습니다")
+                        commentList()
+                    }
                 }
             })
         }
@@ -140,6 +188,7 @@
         $(document).ready(()=>{
             commentList()
         })
+
     </script>
 </body>
 </html>

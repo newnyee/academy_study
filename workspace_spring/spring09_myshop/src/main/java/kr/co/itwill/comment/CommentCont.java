@@ -2,9 +2,11 @@ package kr.co.itwill.comment;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.yaml.snakeyaml.nodes.ScalarNode;
 
 import java.util.List;
 import java.util.Map;
@@ -18,7 +20,7 @@ public class CommentCont {
 
     @RequestMapping("/insert")
     @ResponseBody
-    public int commentServiceInsert(@RequestParam int product_code, @RequestParam String content) throws Exception {
+    public int commentServiceInsert(int product_code, String content) throws Exception {
         CommentDTO comment = new CommentDTO();
         comment.setProduct_code(product_code);
         comment.setContent(content);
@@ -32,8 +34,20 @@ public class CommentCont {
 
     @RequestMapping("/list")
     @ResponseBody
-    public List<CommentDTO> commentServiceList(@RequestParam int product_code) throws Exception {
+    public List<CommentDTO> commentServiceList(int product_code) throws Exception { //@RequestParam 어노테이션 생략 가능
         return commentDAO.commentList(product_code);
+    }
+
+    @RequestMapping("/delete/{cno}") //"/delete/{cno}" 형태로 파라미터를 받으려면 @PathVariable 어노테이션을 사용해야함
+    @ResponseBody //리턴한 값을 그대로 반환
+    public int commentServiceDelete(@PathVariable int cno) throws Exception {
+        return commentDAO.commentDelete(cno);
+    }
+
+    @RequestMapping("/update")
+    @ResponseBody
+    public int commentServiceUpdate(CommentDTO dto) throws Exception {
+        return commentDAO.commentUpdate(dto);
     }
 }
 

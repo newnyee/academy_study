@@ -15,4 +15,15 @@
         WHERE PRODUCT_CODE = #{product_code}
         ORDER BY REGDATE
     </select>
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM PCOMMENT
+        WHERE CNO=#{cno}
+    </delete>
+
+    <update id="update" parameterType="kr.co.itwill.comment.CommentDTO">
+        UPDATE PCOMMENT
+        SET CONTENT = #{content}
+        WHERE CNO = #{cno}
+    </update>
 </mapper>
