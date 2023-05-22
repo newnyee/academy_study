@@ -1,6 +1,6 @@
 package kr.co.itwill;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -8,7 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 //URL에서 요청한 명령어를 읽어서 처리해 주는 클래스
 //HelloController 클래스는 컨트롤러 기능이다
 //스프링 컨테이너 (웹서버)가 자동으로 객체 생성된다
-
 @Controller
 public class HelloController {
 
