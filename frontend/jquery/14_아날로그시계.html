@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>14_아날로그시계.html</title>
+    <script src="jquery-3.6.4.min.js"></script>
+    <script src="moment-with-locales.min.js"></script>
+    <style>
+
+        #warp {
+            width: 600px;
+            height: 600px;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin: -300px 0 0 -300px;
+            font-family: bon, sans-serif;
+        }
+
+        #wrap h3 {
+            height: 80px;
+            font-size: 50px;
+            text-align: center;
+            line-height: 80px;
+            font-weight: 700;
+            color: #424242;
+        }
+
+        /* 시계 전체 원형 이미지 */
+        #clock {
+            width: 500px;
+            height: 500px;
+            background: url(../images/Clock-face.png);
+            background-size: 100% 100%;
+            margin: auto;
+            position: relative;
+            box-shadow: 0 12px 15px 0 rgba(0, 0, 0 , 0.24), 0 17px 50px 0 rgba(0, 0, 0 , 0.19);
+        }
+
+        /* 시침, 분침, 초침 이미지 출력 */
+        #hour { background: url(../images/hour_hand.png); } 
+        #min { background: url(../images/minute_hand.png); }
+        #sec { background: url(../images/second_hand.png); }
+
+        /* 시침, 분침, 초침 이미지가 출력되는 위치 지정 */
+        .hand {
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="wrap">
+        <h3>아날로그시계</h3>
+        <div id="clock"> <!-- 시계 전체 원형 -->
+            <div id="hour" class="hand"></div> <!-- 시침 -->
+            <div id="min" class="hand"></div> <!-- 분침 -->
+            <div id="sec" class="hand"></div> <!-- 초침 -->
+        </div>
+    </div>
+
+
+    <script>
+        // 시, 분, 초 이미지 각도 꺾기
+        const showtime = () => {
+            let now = moment()
+            let hour = now.hour()
+            let min = now.minute()
+            let sec = now.second()
+
+            // 초침 -> 1초 : 6도
+            $('#sec').css('transform', 'rotate(' + (sec*6) + 'deg)')
+
+            // 분침 -> 1분 : 6도,  1초 : 0.1도
+            $('#min').css('transform', 'rotate(' + ((min*6) + (sec*0.1)) + 'deg)')
+
+            // 시침 -> 1시간 : 30도,  1분 : 0.5도, 3초 : 0.025도
+            $('#hour').css('transform', 'rotate(' + ((hour*30) + (min*0.5) + (sec*0.025/3)) + 'deg)')
+        }
+
+        showtime()
+
+        // 1초마다 주기적 또는 반복적으로 함수 호출
+        setInterval(showtime, 1000)
+
+    </script>
+
+</body>
+</html>

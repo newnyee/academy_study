@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>15_form.html</title>
+</head>
+<body>
+    <h3>1. 폼 관련 속성들</h3>
+    <!--
+        id="" 폼 아이디 (주로 Front)
+        name="" 폼 이름 (주로 BackEnd)
+        action="" 사용자가 입력 요청한 정보를 서버측에서 받는 페이지명 또는 명령어 (backEnd)
+        method="" 전송방식 get 또는 post (backEnd)
+        enctypt="" backEnd
+    -->
+    <form id="loginfrm" name="loginfrm" action="ok.jsp">
+        아이디 <input type="text" name="userid"> <hr>
+        비밀번호 <input type="password" name="userpw"> <hr>
+        <input type="submit" value="전송">
+    </form>
+    <hr>
+
+
+
+    <!--파일 첨부해서 전송-->
+    <form enctype="multipart/form-data">
+        첨부 파일 | <input type="file">
+    </form>
+
+
+
+    <!--전송방식 get 또는 post-->
+    <!--사용자가 입력한 정보가 url에 그대로 노출됨-->
+    <form method="get"></form>
+    <h3>2. type=image</h3>
+    <form action="ok2.jsp">
+        <img src="../images/b_con.png" alt="콘">
+        <hr>
+        
+        
+        <!--img src="" >> submit기능-->
+        <!--input타입으로 소스첨부를하면 버튼기능이 들어가 있음-->
+        <input type="image" src="../images/b_muzi.png" alt="콘">
+        검색 <input type="text" name="search">
+        <input type="image" src="../images/search.png">
+    </form>
+    <hr>
+
+
+
+    <h3>3. 다양한 input Type</h3>
+    <!--HTML페이지에서 노출되지는 않지만 form에 포함된 컨트롤 요소-->
+    <input type="hidden" id="page" value="3">
+    <input type="hidden" id="col" name="col" value="title">
+    <hr>
+
+
+    <input type="number" id="quantity" name="quantity" min="1" max="5">
+    <hr>
+
+    
+</body>
+</html>

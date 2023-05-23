@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>16_layout</title>
+        <style>
+            .container {
+                border: 2px solid blue;
+                width: 900px;
+                margin: auto;
+            }
+
+            header {
+                border: 2px solid red;
+                height: 150px;
+                width: 100%; /*부모인 container의 영향으로 900px로 설정됨*/
+                line-height: 150px;
+                text-align: center;
+            }
+
+            .inner section {
+                border: 2px solid green;
+                width: 300px;
+                height: 300px;
+                float: left;
+                padding: 20px;
+                /* 선굵기, 여백 등으로 늘어난 부분은 container의 width=900px 내에서 해결함 */
+                box-sizing: border-box;
+            }
+            
+            /* float속성은 전 요소 속성을 상속받는 특징이 있음. 이미 float:left 가 있는 상태임 */
+            /* footer {border: 5px solid orange; height: 100px;} */
+
+            /* clear : float 속성을 상속받은 속성 해제시킴 */
+            /* footer {border: 5px solid orange; height: 100px; clear: left;} */
+
+            /* clear: both → left, right 모두 해제시킴 */
+            footer {border: 5px solid orange; height: 100px; clear: both;}
+        </style>
+    </head>
+    
+    <body>
+        <!-- 전체 레이아웃 구성하기 -->
+        
+        <div class="container">
+            <header>Header</header>
+
+            <div class="inner">
+                <section>Section 1</section>
+                <section>Section 2</section>
+                <section>Section 3</section>
+            </div>
+
+            <footer>Footer</footer>
+        </div>
+    </body>
+</html>

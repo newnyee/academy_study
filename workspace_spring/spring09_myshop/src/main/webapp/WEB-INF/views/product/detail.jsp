@@ -14,13 +14,29 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="../../css/main.css" rel="stylesheet" type="text/css">
     <script src="../../js/jquery-3.6.4.min.js"></script>
-    <title>detail.jsp</title>
+    <title>product_detail</title>
 
     <script>
         const product_delete = () => {
             if(confirm("정말 삭제하시겠습니까?\n(삭제된 파일은 복구되지 않습니다)")) {
                 document.productfrm.action="/product/delete"
                 document.productfrm.submit()
+            }
+        }
+
+        const product_update = () => {
+            if (confirm("수정하시겠습니까?")) {
+                document.productfrm.action="/product/update"
+                document.productfrm.submit()
+            }
+        }
+
+        const product_cart = () => {
+            if ($('#qty').val() === '0') {
+                alert("상품수량을 선택해주세요");
+            } else {
+                document.productfrm.action='/cart/insert'
+                document.productfrm.submit();
             }
         }
     </script>
@@ -30,8 +46,8 @@
         <h3 align="center">상품 상세 / 상품 수정 / 상품 삭제</h3>
         <p><button class="btn btn-success" type="button" onclick="location.href='/product/list'">상품전체목록</button></p>
 
-        <form name="productfrm" id="productfrm" method="post" action="/product/update" enctype="multipart/form-data">
-            <input type="hidden" name="product_code" value="${product_code}">
+        <form name="productfrm" id="productfrm" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="product_code" id="product_code" value="${product_code}">
             <table class="table">
                 <tr>
                     <td class="success">상품명</td>
@@ -58,8 +74,22 @@
                     </td>
                 </tr>
                 <tr>
+                    <td class="success">상품수량</td>
+                    <td>
+                        <select style="width: 80px" class="form-control" name="qty" id="qty">
+                            <option value="0">선택</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="2" align="center">
-                        <input type="submit" class="btn btn-success" value="상품수정">
+                        <input type="button" class="btn btn-success" onclick="product_cart()" value="장바구니담기">
+                        <input type="button" class="btn btn-default" onclick="product_update()" value="상품수정">
                         <input type="button" class="btn" onclick="product_delete()" value="상품삭제">
                     </td>
                 </tr>
@@ -71,7 +101,7 @@
         <div>
             <form name="commentInsertForm" id="commentInsertForm">
                 <div>
-                    <input type="hidden" name="product_code" id="product_code" value="${product.PRODUCT_CODE}">
+                    <input type="hidden" name="product_code" value="${product_code}">
                     <div class="form-group">
                         <label for="content">댓글</label>
                         <textarea class="form-control" rows="3" name="content" id="content" style="resize: none" placeholder="내용을 입력해 주세요"></textarea>
@@ -91,7 +121,7 @@
 
     <%-- 댓글 관련 자바스크립트 --%>
     <script>
-        let product_code = '${product.PRODUCT_CODE}' //부모글번호
+        let product_code = '${product_code}' //부모글번호
 
         // 댓글 등록 버튼 이벤트
         $('#commentInsertBtn').on('click', ()=>{

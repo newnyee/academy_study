@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>02_ajax시작.html</title>
+    <script src="jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+    <button>* JSON 데이터 받아오기 *</button>
+
+    <script>
+
+        $('button').click(()=>{
+            $.ajax('actors.json', {
+                dataType: 'json',
+                error: (xhr, status, error)=>{
+                    alert('ERROR')
+                    alert(xhr) //XMLHttpRequest 객체
+                    alert(status) //응답상황
+                    alert(error) //에러이유출력
+                },
+                success: (data, status, xhr)=>{
+                    alert('SUCCESS')
+                    alert(data) //서버가 응답해준 객체형태의 메세지
+                    alert(status) //응답상황
+                    alert(xhr) //XMLHttpRequest 객체
+                }
+            })
+        })
+
+    </script>
+  
+</body>
+</html>

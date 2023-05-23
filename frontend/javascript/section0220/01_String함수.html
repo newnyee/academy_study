@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01_String함수의 메소드.html</title>
+</head>
+<body>
+  <h3>String Method</h3>
+
+  <script>
+    let str = "Gone with The wind"
+    document.write(str)
+    document.write("<hr>")
+
+    document.write(str.length) // 18 -> 글자갯수
+    document.write("<hr>")
+
+    document.write(str.charAt(0)) // G -> '0'인덱스의 문자 추출
+    document.write("<hr>")
+
+    document.write(str.charAt(17)) // d
+    document.write("<hr>")
+
+    document.write(str.charAt(str.length-1)) // d -> 마지막 인덱스의 문자 추출
+    document.write("<hr>")
+    
+    document.write(str.toLocaleLowerCase()) // 전부 소문자 치환
+    document.write("<hr>")
+
+    document.write(str.toUpperCase()) // 전부 대문자 치환
+    document.write("<hr>")
+
+    document.write(str.replace('n', 'N')) // "GoNe with The wind" -> 치환될 문자, 치환할 문자, 처음만나는 문자 하나만 치환됨
+    document.write("<hr>")
+
+    document.write(str.substring(10, 13)) // 10~12인덱스의 문자 추출
+    document.write("<hr>")
+
+    // 맨 앞글자 자르기
+    document.write(str.substring(1,str.length))
+    document.write("<hr>")
+
+    // 맨 마지막 글자 자르기
+    document.write(str.substring(0,str.length-1))
+    document.write("<hr>")
+
+    document.write(str.slice(10, 13)) // 10~12인덱스의 문자 추출
+    document.write("<hr>")
+    
+    document.write("#" + "     s  k y  ".trim()) // 앞, 뒤의 공백 제거, 사이공백은 제거되지 않음
+    document.write("<hr>")
+
+
+     // 문자열 연결
+    let text1 = "Hello"
+    let text2 = "World"
+    let text3 = text1.concat(text2)
+    document.write(text3)
+    document.write("<hr>")
+
+
+    // 4칸을 기준으로 빈칸을 *로 앞에서 부터 채우기
+    let text5="9"
+    document.write(text5.padStart(4,"*")) // ***9
+    document.write("<hr>")
+
+
+    // 4칸을 기준으로 빈칸을 *로 뒤에서 부터 채우기
+    let text6="9"
+    document.write(text6.padEnd(4,"*")) //9***
+    document.write("<hr>")
+
+
+  </script>
+  
+</body>
+</html>

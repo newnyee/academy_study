@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="1">
+  <title>06_Date객체.html</title>
+</head>
+<body>
+  <h3>Date 객체</h3>
+  현재날짜 <div id="clock"></div>
+
+  <script>
+    // 문제) 날짜변수 d값을 이용해서 날짜 정보를 아래와 같이 구성해서 id=clock에 출력하시오
+    // 예) 2023.02.15 (수) PM 05 : 09 : 42
+    
+    let d = new Date()
+    let today=""
+
+
+    today += d.getFullYear() + "." // 년
+
+
+    if(d.getMonth()+1<10) {  // 월
+      today += "0"
+    }
+    today += d.getMonth()+1 + "."
+
+
+    today += d.getDate() + " " // 일
+    
+
+    const day = ["일", "월", "화", "수", "목", "금", "토"] // 요일
+    today += "(" + day[d.getDay()] + ") "
+
+
+    if(d.getHours>=12) { // PM, AM
+      today += "PM "
+    }
+    today += "AM "
+
+
+    let hours = d.getHours() // 시
+    if(hours>12) {
+      hours -= 12
+    }
+    if(hours<10) {
+      today += "0"
+    }
+    today += hours + " : "
+
+
+    if(d.getMinutes()<10) { // 분
+      today += "0"
+    }
+    today += d.getMinutes() + " : "
+
+
+    if(d.getSeconds()<10) { // 초
+      today += "0"
+    }
+    today += d.getSeconds()
+
+
+    document.getElementById("clock").innerText = today
+  </script>
+</body>
+</html>

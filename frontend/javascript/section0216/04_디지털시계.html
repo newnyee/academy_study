@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>디지털 시계</title>
+</head>
+<body>
+  <h3>디지털 시계</h3>
+  <div id="clock"></div>
+  <hr>
+
+  <input type="button" value="시작" onclick="showTime()">
+  <input type="button" value="중지" onclick="killTime()">
+
+  <script>
+  const showTime = () => {
+
+    let d = new Date()
+    let today=""
+
+    today += d.getFullYear() + "." // 년
+
+
+    if(d.getMonth()+1<10) {  // 월
+      today += "0"
+    }
+    today += d.getMonth()+1 + "."
+
+
+    today += d.getDate() + " " // 일
+    
+
+    const day = ["일", "월", "화", "수", "목", "금", "토"] // 요일
+    today += "(" + day[d.getDay()] + ") "
+
+
+    if(d.getHours()>=12) { // PM, AM
+      today += "PM "
+    } else {
+      today += "AM "
+    }
+
+    let hours = d.getHours() // 시
+    if(hours>12) {
+      hours -= 12
+    }
+    if(hours<10) {
+      today += "0"
+    }
+    today += hours + " : "
+
+
+    if(d.getMinutes()<10) { // 분
+      today += "0"
+    }
+    today += d.getMinutes() + " : "
+
+
+    if(d.getSeconds()<10) { // 초
+      today += "0"
+    }
+    today += d.getSeconds()
+
+    document.getElementById("clock").innerText = today
+
+    timer = setTimeout(showTime, 1000)
+  }
+
+  let timer;
+
+  const killTime = () => { // 시간 해제
+    clearTimeout(timer)
+  }
+
+  showTime()
+  </script>
+</body>
+</html>

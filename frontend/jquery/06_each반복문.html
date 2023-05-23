@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>06_each반복문.html</title>
+    <script src="jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <h3>each반복문</h3>
+    <button id="startBtn">7단</button>
+    <ul id="displayList"></ul>
+
+    <script>
+        // 구조:HTML 표현:css 동작:JavaScript, jQuery, AngularJS+react+vue -> Frontend MVC
+        // Backend MVC -> Spring Framework
+
+        $('#startBtn').click(()=>{
+            let dan = 7;
+            for(let i=1; i<=9; i++) {
+                // $("li") <body>에 있는 요소들 중에서 <li>요소에 접근
+                // $("<li>") <body>에 새로운 <li>요소를 생성
+                $("<li>").text(dan + " * " + i + " = " + (dan*i)).appendTo('#displayList')
+            }
+
+            // jQuery의 each반복문
+            // 형식) $.each(배열, ()=>{})
+            // 형식) $(배열).each(()=>{})
+
+            $('li').each(function(){
+                let result = $(this).text()
+                alert(result)
+            })
+        })
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04_배열연습문제</title>
+</head>
+<body>
+    <h3>배열 연습 문제</h3>
+    
+    <script>
+
+        const num = [7, 8, -9, 5, 6];
+        let size = num.length;
+        
+        const number = []
+        for(const value of num) {
+            number.push(value)
+        }
+
+        document.write(num)
+        document.write("<hr>")
+
+        
+        //문1)배열 요소의 전체 합을 구하시오
+        let sum=0;
+        for(let i=1; i<size; i++) {
+            sum += num[i]
+        }
+        document.write(sum)
+        document.write("<hr>")
+
+
+        //문2)음수의 갯수를 구하시오
+        let count = 0;
+        for (const miner of num) {
+            if(miner<0) {
+                count++
+            }
+        }
+        document.write(count)
+        document.write("<hr>")
+
+
+        //문3)최대값, 최소값을 각각 구하시오
+        let align = number.sort(function(a, b){ return a - b })
+        let max = align[size-1]
+        let min = align[0]
+        document.write(`최대값: ${max}, 최소값: ${min}`)
+        document.write("<hr>")
+
+
+        //문4)num[4]요소의 등수를 구하시오
+        align = number.sort(function(a, b){ return b - a })
+        let rk = align.indexOf(num[4])+1
+        document.write(rk + "등")
+        document.write("<hr>")
+
+        // 과제) num 배열 요소의 각각의 등수를 모두 구하시오
+        const rank = [1, 1, 1, 1, 1]
+        align = number.sort(function(a, b){ return b - a })
+        for (let i=0; i<size; i++) {
+            rank[i] = align.indexOf(num[i])+1
+        }
+        document.write(rank)
+        
+
+    </script>
+</body>
+</html>

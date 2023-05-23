@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>03_json데이터가져오기</title>
+    <script src="jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <button>* JSON 데이터 받아오기 *</button>
+    <div id="panel"></div>
+
+    <script>
+
+        $('button').click(()=>{
+            $.ajax(
+                'sungjuk.json', { //서버로부터 문자데이터를 가져와라
+                    dataType: 'json', //누락되면 기본값으로 텍스트가 들어감
+                    error: (error)=>{
+                        alert('ERROR' + error)
+                    },
+                    success: (result)=>{
+                        // alert('SUCCESS')
+                        // alert(result) //서버가 응답해준 객체형태의 데이터
+                        // alert(result.length)
+                        let size = result.length
+                        let str = "<table border='1'>"
+                        for(let i=0; i<size; i++) {
+                            str += "<tr>"
+                            str += "  <td>" + result[i].name + "</td>"
+                            str += "  <td>" + result[i].id + "</td>"
+                            str += "  <td>" + result[i].kor + "</td>"
+                            str += "  <td>" + result[i].eng + "</td>"
+                            str += "  <td>" + result[i].mat + "</td>"
+                            str += "</tr>"
+                        }
+                        str += '</table>'
+                        
+                        // $('#panel').html(str)
+                        // $('#panel').text(str)
+                        $('#panel').append(str)
+                    }
+                }
+            )
+        })
+
+    </script>
+
+</body>
+</html>

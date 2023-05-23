@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>05_collback함수.html</title>
+    <script src="jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+    <button>* JSON 데이터 받아오기 *</button>
+    <div id="panel"></div>
+
+    <script>
+
+        responseProc = (result, status, xhr)=>{
+            let str = "<table border='1'>"
+            $.each(result, (idx, data)=>{
+                str += "<tr>"
+                str += "  <td>" + data.name + "</td>"
+                str += "  <td>" + data.id + "</td>"
+                str += "  <td>" + data.kor + "</td>"
+                str += "  <td>" + data.eng + "</td>"
+                str += "  <td>" + data.mat + "</td>"
+                str += "</tr>"
+            })
+            str += "</table>"
+
+            $('#panel').empty()
+            $('#panel').append(str)
+        }
+
+        $('button').click(()=>{
+            // $.get(), $.post(), $.serialize()
+            // $.getJSON(url, callback함수) JSON 데이터를 가져온다
+            $.getJSON('sungjuks.json', responseProc)
+        })
+
+
+
+    </script>
+
+</body>
+</html>

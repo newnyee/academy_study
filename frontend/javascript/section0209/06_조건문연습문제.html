@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>조건문 연습문제</h3>
+
+    <script>
+        // 문제1) 평균점수에 따라서 A, B, C, D, F 학점을 출력하시오 (switch문 활용)
+        let kor=10, eng=10, mat=10;
+        let aver=parseInt((kor+eng+mat)/3);
+
+        switch (parseInt(aver/10)) {
+            case 10 :
+            case  9 : document.write("A"); break;
+            case  8 : document.write("B"); break;
+            case  7 : document.write("C"); break;
+            case  6 : document.write("D"); break;
+            default : document.write("F"); break;
+        }
+        document.write("<hr>");
+
+
+        // 문제2) 연산기호(op)에 따라 결과값을 출력하시오
+        let i=3, j=5;
+        let op="*";
+
+        switch (op) {
+            case "+": document.write(i+j); break;
+            case "-": document.write(i-j); break;
+            case "*": document.write(i*j); break;
+            case "/": document.write(i/j); break;
+        }
+        document.write("<hr>");
+        // let result = eval(i+op+j);
+        // document.write(result);
+
+
+        // 문제3) 주민번호를 이용해서 나이와 성별을 출력하시오
+        // 예) 주민번호 "191230-4234567"
+        // -> 나이 : 올해년도-태어난연도
+        // -> 성별 : 1 또는 3 남자, 2 또는 4 여자
+        // let myYear=parseInt("19"); //태어난 년도
+        // let myCode=parseInt("4");  //성별코드
+
+        // switch (myCode) {
+        //     case 1:
+        //     case 2: myYear=myYear+1900; break;
+        //     case 3:
+        //     case 4: myYear=myYear+2000; break;
+        // }
+
+        // let myAge=2023-myYear;
+        // document.write("나이: " + myAge);
+
+        // switch (myCode) {
+        //     case 1:
+        //     case 3: document.write(", 성별: 남자"); break;
+        //     case 2:
+        //     case 4: document.write(", 성별: 여자"); break;
+        // }
+        // document.write("<hr>");
+
+        // 문자열 추출하여 나이와 성별 출력하기
+        let String = "1912304234567";
+        let myYear = parseInt(String.substr(0,2)); // 인덱스 0번부터 2개의 문자추출
+        // myYear=parseInt(String.substring(0,1)); // 인덱스 0~1까지 추출
+        let myCode = parseInt(String.charAt(6));   // 6번 인덱스 문자 한개 추출하기
+        
+        switch (myCode) {
+            case 1:
+            case 2: myYear = myYear+1900; break;
+            case 3:
+            case 4: myYear = myYear+2000; break;
+        }
+        
+        let year = new Date();
+        let myAge = year.getFullYear() - myYear;
+        document.write("나이: " + myAge);
+
+        switch (myCode) {
+            case 1:
+            case 3: document.write(", 성별: 남자"); break;
+            case 2:
+            case 4: document.write(", 성별: 여자"); break;
+        }
+
+    </script>
+    
+</body>
+</html>

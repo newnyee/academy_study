@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_형변환</title>
+</head>
+<body>
+    <h3>자료형변환 (Type Conversion)</h3>
+
+    <script>
+        // 형변환 : 필요한 곳에서 일시적(강제적)으로 변환
+        document.write(10+20);
+        document.write("<br>");
+        document.write("10"+'20');
+        document.write("<br>");
+        document.write("<hr>");
+
+        // 1. Number() : 내장함수
+        // -> 숫자로 구성된 문자열을 숫자형으로 변환하는 기능
+        document.write(Number("10"));               //10
+        document.write("<br>");
+        document.write(Number("10")+Number("20"));  //30
+        document.write("<br>");
+        document.write(Number("10      "));         //10
+        document.write("<br>");
+        document.write(Number("      10"));         //10
+        document.write("<br>");
+        document.write(Number("10.23"));            //10.23
+        document.write("<br>");
+        document.write(Number("KOREA"));            //NaN (Not a Number)
+        document.write("<br>");
+        document.write(Number("1 2 3"));            //NaN 
+        document.write("<br>");
+        document.write(Number(true));               //1
+        document.write("<br>");
+        document.write(Number(false));              //0        
+        document.write("<hr>");
+
+        // 2. parseInt()
+        // -> 숫자로 구성된 문자열을 정수형으로 변환
+        document.write(parseInt("10"));             //10
+        document.write("<br>");
+        document.write(parseInt("-10"));            //-10
+        document.write("<br>");
+        document.write(parseInt(10.23));          //10
+        document.write("<br>");
+        document.write(parseInt("SEOUL"));          //NaN 
+        document.write("<hr>");
+
+        // 3. parseFloat()
+        // -> 숫자로 구성된 문자열을 실수형으로 변환
+        document.write(parseFloat("10"));           //10
+        document.write("<br>");
+        document.write(parseFloat("10.23"));        //10.23
+        document.write("<br>");
+        document.write(parseFloat("JAVA"));         //NaN
+        document.write("<hr>");
+
+        // 4. String()
+        // -> 문자형으로 변환
+        document.write(String(123));                //"123"
+        document.write("<br>");
+        document.write(String(123)+String(456));    //"123456"
+        document.write("<hr>");
+
+        // 5. toString()
+        // -> 문자형으로 변환
+        document.write((123).toString());                     //"123"
+        document.write("<br>");
+        document.write((123).toString()+(456).toString());    //"123456"
+        document.write("<hr>");
+
+        // 6. boolean값의 형변환
+        document.write(Number(true));               //1
+        document.write("<br>");
+        document.write(Number(false));              //0        
+        document.write("<br>");
+
+        document.write(String(true));               //"true"
+        document.write("<br>");
+        document.write(String(false));              //"false"
+        document.write("<hr>");
+
+        // 7. eval()
+        document.write("10+20");                    //"10+20"
+        document.write("<br>");
+        document.write(eval("10+20"));              //30
+        document.write("<hr>");
+
+        let x=10;
+        let y=20;
+        let text = "x * y";
+        document.write(text);                       //"x * y"
+        document.write("<br>");
+        document.write(eval(text));                 //200
+        document.write("<hr>");
+
+        // 8. isNaN()
+        // 숫자형으로 구성된 값인지?
+        document.write(isNaN(123));                 //false
+        document.write("<br>");
+        document.write(isNaN(-1.23));               //false
+        document.write("<br>");
+        document.write(isNaN("123"));               //false
+        document.write("<br>");
+        document.write(isNaN("KOREA"));             //true
+        document.write("<br>");
+        document.write(isNaN(3.4));                 //false
+        document.write("<hr>");
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05_document</title>
+</head>
+<body>
+    <h3>document 객체</h3>
+    <div id="demo"></div>
+
+    <script>
+        // 객체 Object
+        // -> 속성     객체명.멤버변수
+        // -> 메소드   객체명.멤버함수()
+
+        document.write(123);
+        document.write("대한민국");
+        document.write("<hr>");
+
+        // + 연산자
+        document.write(3+5);
+        document.write(3+"5");
+        document.write("3"+5);
+
+        // 자바스크립트에서 html tag사용시 문자열 처리해서 사용한다
+        document.write("개나리<br><p>진달래<P>");
+        document.write("<img src='../../images/monkey.png'>")
+
+        let str=""; //빈문자열 (글자갯수 0개)
+        str=str+"one";
+        document.write(str);
+        document.write("<hr>")
+
+        str=str+"two";
+        document.write(str);
+        document.write("<hr>")
+
+
+        str=str+"three";
+        document.write(str);
+        document.write("<hr>")
+
+        str="".length;
+        document.write(str);
+
+        // 본문 <body>에 있는 id 속성 접근
+
+        // 1) 순수 javascript 접근
+        // document.getElementById("demo")
+        // document.getElementById("demo").innerText="아이티윌"
+
+        // 2) jQuery 접근 (jQuery라이브러리 필요함)
+        // $("demo")
+        // $("#demo").val("아이티윌")
+
+        // 연습) 이름, 나이, 키 값들을 표작성을 해서 id=demo에 출력하시오
+        name="김연아"
+        age=30;
+        height=165.7;
+
+        let result="";
+        result = result + "<table border='1'>";
+        
+        result = result + "<tr>";
+        result = result + "<th>이름</th>";
+        result = result + "<td>" + name + "</td>";
+        result = result + "</tr>";
+        
+        result = result + "<tr>";
+        result = result + "<th>나이</th>";
+        result = result + "<td>" + age + "</td>";
+        result = result + "</tr>";
+        
+        result = result + "<tr>";
+        result = result + "<th>키</th>";
+        result = result + "<td>" + height + "</td>";
+        result = result + "</tr>";
+        result = result + "</table>";
+
+        //결과값을 문자열로 출력
+        document.getElementById("demo").innerText = result;
+
+        //결과값을 HTML tag형식으로 출력
+        document.getElementById("demo").innerHTML = result;
+
+        // jQuery 에서 접근
+        // $("#demo").text(result)
+        // $("#demo").html(result)
+
+    </script>
+    
+</body>
+</html>

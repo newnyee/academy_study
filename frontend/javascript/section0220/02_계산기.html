@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02_계산기.html</title>
+
+  <style>
+    .txt{
+      border: 2px solid #ccffff;
+      text-align: right;
+      font-weight: bold;
+      font-size: 20px;
+      color: black;
+      height: 20px;
+      background: #f5f5f5;
+    }
+  </style>
+</head>
+<body>
+  <h3>미니 계산기</h3>
+  <form action="">
+    <table border="1">
+      <tr>
+        <td colspan="4"><input type="text" name="result" id="result" size="15" value="0" readonly class="txt"></td>
+      </tr>
+      <tr>
+        <td colspan="2"><input type="button" value="  C  " onclick="cls()"></td>
+        <td colspan="2"><input type="button" value="  ←  " onclick="backspace()"></td>
+      </tr>
+      <tr>
+        <td><input type="button" value="  7  " onclick="inputData(7)"></td>
+        <td><input type="button" value="  8  " onclick="inputData(8)"></td>
+        <td><input type="button" value="  9  " onclick="inputData(9)"></td>
+        <td><input type="button" value="  /  " onclick="operator('/')"></td>
+      </tr>
+      <tr>
+        <td><input type="button" value="  4  " onclick="inputData(4)"></td>
+        <td><input type="button" value="  5  " onclick="inputData(5)"></td>
+        <td><input type="button" value="  6  " onclick="inputData(6)"></td>
+        <td><input type="button" value="  *  " onclick="operator('*')"></td>
+      </tr>
+      <tr>
+        <td><input type="button" value="  1  " onclick="inputData(1)"></td>
+        <td><input type="button" value="  2  " onclick="inputData(2)"></td>
+        <td><input type="button" value="  3  " onclick="inputData(3)"></td>
+        <td><input type="button" value="  -  " onclick="operator('-')"></td>
+      </tr>
+      <tr>
+        <td><input type="button" value="  .  " onclick=""></td>
+        <td><input type="button" value="  0  " onclick="inputData(0)"></td>
+        <td><input type="button" value="  =  " onclick="compute()"></td>
+        <td><input type="button" value="  +  " onclick="operator('+')"></td>
+      </tr>
+    </table>
+  </form>
+
+  <script>
+    // C버튼 click시 result값 "0" 출력
+    let rslt = document.getElementById('result')
+    const cls = () => {
+      rslt.value = 0
+    }
+
+    // 숫자버튼 click시 누른 숫자버튼 출력
+    const inputData = (su) => {
+      rslt.value = Number(rslt.value + su)
+    }
+
+    // ← 버튼 click시 result값의 마지막 문자 삭제
+    const backspace = () => {
+      if(rslt.value.length===1) { // 단, 글자 개수가 1개이면 0으로 대입
+        rslt.value = 0
+      } else {
+        rslt.value = rslt.value.substring(0, rslt.value.length-1)        
+      }
+    }
+
+    // 연산에 필요한 전역변수 선언
+    let op // 연산기호
+    let num1 // 사용자가 입력한 첫번째 수
+    let num2 // 사용자가 입력한 두번째 수
+
+    // 클릭한 연산기호를 전역변수 op에 저장, 전역변수 num에 숫자 저장
+    const operator = (kind) => {
+      op=kind
+      num1 = Number(rslt.value)
+      cls() // 두번째 수 입력 전에 0으로 초기화
+    }
+
+    //
+    const compute = () => {
+      num2 = Number(document.getElementById('result').value)
+
+      document.getElementById('result').value = eval(num1 + op + num2)
+
+    }
+  </script>
+</body>
+</html> 

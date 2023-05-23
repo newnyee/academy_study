@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09_로또번호</title>
+</head>
+<body>
+
+  <h3>로또번호</h3>
+
+  <input type="button" value="로또번호발생" onclick="lotto()">
+  <div id="demo"></div>
+
+  <script>
+
+    // 방법1
+    const lotto = () => {
+      const num = [];
+      for(let i=0; i<45; i++) { // 45개의 번호가 들어있는 배열 생성
+        num.push(i+1)
+      }
+
+      const lotto=[]; // 6개의 로또번호를 저장할 배열
+      for(let i=0; i<6; i++) {
+        let rand = Math.floor((Math.random()*num.length)) // num배열의 길이보다 작은 인덱스를 랜덤 추출
+        lotto.push((num.splice(rand,1))[0]) // 추출한 인덱스번호에 해당하는 값을 lotto 배열에 넣으면서 num배열에서는 삭제함
+      }
+
+      lotto.sort((a,b)=>a-b); // 오름차순 정렬
+
+      document.getElementById('demo').innerText = lotto // 출력
+    }
+
+    // 방법2
+    /*
+    function lotto() {
+      
+      let lotto = [] // 6개의 로또번호를 저장할 배열
+
+      for (let i=0; i<6; i++) {
+        lotto[i] = parseInt((Math.random()*45))+1 // 1~45 까지의 정수 랜덤 추출
+        for(let j=0; j<i; j++) {
+          if(lotto[i]==lotto[j]) { // 추출한 값이 다른 인덱스의 값과 같은지 중복확인
+            i-- // 중복값이 배열에 없다면 i에서 1을 빼고 break함
+            break
+          }
+        }
+      }
+
+      lotto.sort((a,b)=>a-b); // 오름차순 정렬
+
+      document.getElementById('demo').innerText = lotto // 출력
+    }
+    */
+
+    // 방법3
+    /*
+    const lotto = () => {
+      var lotto = [] // 6개의 로또번호를 저장할 배열
+      while (lotto.length < 6) {
+          var num = parseInt(Math.random() * 45 + 1); // 1~45 까지의 정수 랜덤 추출
+          if (lotto.indexOf(num) === -1) { // 추출한 값이 다른 인덱스의 값과 같은지 중복확인
+              lotto.push(num); // 중복값이 배열에 없다면 num을 lotto배열에 push
+          }
+      }
+
+      lotto.sort((a,b)=>a-b); // 오름차순 정렬
+
+      document.getElementById('demo').innerText = lotto // 출력
+    }
+    */
+
+
+  </script>
+</body>
+</html>

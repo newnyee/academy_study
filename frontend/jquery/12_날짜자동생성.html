@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>12_날짜자동생성.html</title>
+    <script src="jquery-3.6.4.min.js"></script>
+    <script src="moment-with-locales.min.js"></script>
+</head>
+<body>
+
+    <h3>날짜 데이터 자동 생성</h3>
+
+    생년월일 :
+    <select id="myYear"></select>년
+    <select id="myMonth"></select>월
+    <select id="myDate"></select>일
+
+    <script>
+
+        createYearMonth()
+
+        // 년, 월 생성하기
+        function createYearMonth(){
+
+
+
+            // 1) 1월~12월 생성 후 id='myMonth' 추가
+            for(let m=1; m<=12; m++) {
+                //부모.append(자식)
+                $('#myMonth').append($('<option>').val(m).text(m))
+                //자식.appendTo(부모)
+                //$('<option>').val(m).text(m).appendTo($('#myMonth'))
+            }
+
+            // 2) 현재년도-5년 ~ 현재년도+5년까지 id='myYear' 추가
+            let nowYear = moment().year()
+            for(let y=nowYear-5; y<=nowYear+5; y++) {
+                // 3) 현재년도를 미리 selected
+                if(y==nowYear) {
+                    $('#myYear').append($('<option>').val(y).text(y).attr('selected','selected'))
+                    //$('#myYear').append($('<option>').val(y).text(y).prop('select',true))
+                } else {
+                    $('#myYear').append($('<option>').val(y).text(y))
+                }
+            }
+
+            createDate()
+        }
+
+        //일 생성
+        function createDate(){
+
+            $("#myDate").empty();
+            //val() : <input>, <select>, <textarea> 등 폼과 관련된 값(컨트롤 요소)을 얻어올 때
+            //text() : 일반적인 요소의 문자열 값을 얻어올 때
+
+            // 년, 월 선택시(change) 해당 월의 일수에 맞는 일자 생성
+
+            let year = $('#myYear').val() //선택된 연도
+            let month = $('#myMonth').val()  //선택된 월
+            
+            // endOf() : 해당년도와 해당월의 마지막 일을 반환
+            let endDay = moment(year+'-'+month).endOf('month').date()
+
+            // 해당년도의 일을 생성 후 id='myDate' 추가
+            for(let d=1; d<=endDay; d++) {
+                $('#myDate').append($('<option>').val(d).text(d))
+            }
+                    
+        }
+
+        $('#myYear, #myMonth').change(createDate)
+
+    </script>
+
+  
+</body>
+</html>

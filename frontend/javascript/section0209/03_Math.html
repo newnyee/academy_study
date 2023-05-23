@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_Math</title>
+</head>
+<body>
+    <h3>Math 객체</h3>
+
+    <script>
+        // Math : 수학 관련 객체
+        // 객체 Object
+        // -> 멤버변수(property, atrribute, field) + 멤버함수(method)
+        // -> 객체.멤버변수
+        // -> 객체.멤버함수()
+
+        document.write(Math.PI); // 파이
+        document.write("<br>");
+        document.write(Math.E); // 자연로그의 밑 값 e
+        document.write("<hr>");
+
+
+        document.write(Math.abs(-3)); //절대값
+        document.write("<br>");
+        document.write(Math.max(5, 7)); //최대값
+        document.write("<br>");
+        document.write(Math.max(-5, -7, -9));
+        document.write("<br>");
+        document.write(Math.min(-5, -7, -9)); //최소값
+        document.write("<br>");
+        document.write(Math.pow(2, 4)); // 제곱 (2의 4승)
+        document.write("<hr>");
+
+
+        document.write(Math.max(5, Math.max(2, 3))); // 함수 중첩 사용 가능
+        document.write("<hr>");
+
+
+        document.write(Math.ceil(4.9)); // 소수점 올림
+        document.write("<br>");
+        document.write(Math.ceil(4.4));
+        document.write("<br>");
+        document.write(Math.ceil(-4.2));
+        document.write("<hr>");
+
+        
+        document.write(Math.floor(4.9)); // 소수점 버림
+        document.write("<br>");
+        document.write(Math.floor(4.4));
+        document.write("<br>");
+        document.write(Math.floor(-4.2));
+        document.write("<hr>");
+
+
+        document.write(Math.round(4.9)); // 소수점 반올림
+        document.write("<br>");
+        document.write(Math.round(4.4));
+        document.write("<br>");
+        document.write(Math.round(-4.2));
+        document.write("<hr>");
+
+
+        // Math.random() : 0~1 사이의 실수를 무작위로 출력 (난수)
+        // random값 발생 범위 : 0.0 <= r < 1.0
+        document.write(Math.random());
+        document.write("<br>");
+        document.write(parseInt(Math.random())*2); // 0, 1 만 출력됨
+        document.write("<br>");
+        document.write(Math.random());
+        document.write("<br>");
+        document.write("<hr>");
+
+        // 문) 주사위 1~6 사이의 수만 발생시키시오
+        document.write(parseInt(Math.random()*6)+1);
+        document.write("<hr>");
+
+
+        // 문) 로또번호 1~45 사이의 수만 발생시키시오
+        document.write(parseInt(Math.random()*45)+1);
+        document.write("<br>");
+        document.write(parseInt(Math.random()*45)+1);
+        document.write("<br>");
+        document.write(parseInt(Math.random()*45)+1);
+        document.write("<br>");
+        document.write(parseInt(Math.random()*45)+1);
+        document.write("<br>");
+        document.write(parseInt(Math.random()*45)+1);
+        document.write("<br>");
+        document.write(parseInt(Math.random()*45)+1);
+        document.write("<hr>");
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>

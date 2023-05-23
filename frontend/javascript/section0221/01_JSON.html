@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01_JSON.html</title>
+</head>
+<body>
+
+  <h3> JSON 함수 </h3>
+
+  <script>
+    let myObj={
+      "name" : "Jhon", 
+      "age" : 30,
+      "cars" : ["Ford", "BMW", "Fiat"]
+    }
+    document.write(myObj.cars[0])
+    document.write("<hr>")
+
+    // for~in 반복문
+    // 형식) for ('index' in 'object') {}
+    const numbers=[45, 4, 9, 16, 25]
+
+    for(let i=0; i<numbers.length; i++) {
+      document.write(numbers[i])
+      document.write("<br>")
+    }
+    document.write("<hr>")
+
+    for(let i in numbers) {
+      document.write(numbers[i])
+      document.write("<br>")
+    }
+    document.write("<hr>")
+
+    /*
+    const person = {"firstName" : "John", "lastName" : "Doe", "age" : 46}
+    for(let i in person) {
+      document.write(person[i])
+      document.write("<br>")
+    }
+    document.write("<hr>")
+    
+    document.write(person.firstName)
+    document.write("<br>")
+    document.write(person.lastName)
+    document.write("<br>")
+    document.write(person.age)
+    document.write("<hr>")
+    */
+
+    // JSON 관련 함수
+    // 1) JSON.parse()
+    // -> String형태의 JSON문법을 분리할 때
+      const person = '{"firstName" : "John", "lastName" : "Doe", "age" : 46}' // 문자열
+      document.write(person) // 문자열 그대로 출력
+      document.write("<br>")
+      document.write(person.length) // person이 일반 문자열이기때문에 길이가 출력됨
+      document.write("<hr>")
+
+      let obj = JSON.parse(person) // 역직렬화 -> 문자열을 객체로 만듦
+      document.write(obj) // [object Object]
+      document.write("<br>")
+      document.write(obj.firstName)
+      document.write("<br>")
+      document.write(obj.lastName)
+      document.write("<br>")
+      document.write(obj.age)
+      document.write("<hr>")
+
+    // 2) JSON.stringify()
+    // -> JSON값을 일반 문자열로 변환
+    let txt = {"firstName" : "John", "lastName" : "Doe", "age" : 46} // 객체
+    let str = JSON.stringify(txt) // 직렬화 -> 객체를 문자열로 만듦
+    document.write(str) // {"firstName":"John","lastName":"Doe","age":46}
+    document.write("<br>")
+    document.write(str.length)
+    document.write("<hr>")
+
+    // JSON으로 구성된 파일을 작성하는 경우 .json으로 저장한다
+    // 예) actors.json
+
+  </script>
+
+</body>
+</html>

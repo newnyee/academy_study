@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>11_moment.html</title>
+    <!-- jQuery import -->
+    <script src="jquery-3.6.4.min.js"></script>
+    <!-- moment 오픈소스 import -->
+    <script src="moment-with-locales.min.js"></script>
+    <style>
+        #time {
+            margin: 70px;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>moment.js 오픈소스</h3>
+    <h1 id="time"></h1>
+
+    <script>
+        // 자바스크립트기반 오픈소스 인기 순위 http://start.js.org/
+
+        /*
+            moment.js
+            자바스크립트의 내장객체 Date()의 복잡성을 단순, 다양하게 사용하기 위한 자바스크립트기반 오픈소스
+            https://momentjs.com/
+        */
+
+        /*
+        // 1) 자바스크립트
+        // 문제) 본문에 id=time에 날짜 출력하기 2023년 3월 30일 13시 12분 45초
+        let now = new Date()
+
+        let fullDate = now.getFullYear() + "년 " +
+                      (now.getMonth()+1) + "월 " +
+                       now.getDate() + "일 " +
+                       now.getHours() + "시 " +
+                       now.getMinutes() + "분 " +
+                       now.getSeconds() + "초"
+        
+        // document.getElementById('time').innerText = fullDate
+        $('#time').text(fullDate)
+        */
+       
+        // 2) moment.js
+        moment.locale('ko')
+        let fullDate = moment.format("YYYY년 MM월 DD일 HH시 mm분 ss초")
+        $('#time').text(fullDate)
+        
+
+    </script>
+  
+</body>
+</html>

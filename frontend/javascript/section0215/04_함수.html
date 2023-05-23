@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04_함수.html</title>
+</head>
+<body>
+  <h3>함수의 return값</h3>
+  <script>
+    const test1 = function() {
+      document.write("SEOUL")
+      return      
+    }
+    test1()
+
+    const test2 = function (a) {
+      if(a<0) {
+        return
+      }
+      document.write(a)
+    }
+    test2(-3)  //호출하여도 함수안의 if문으로 인해 return되어 -3이 출력되지 않음
+
+    
+    console.log(test3(6,7))
+    function test3(a,b) {
+      let c=a+b
+      return c //리턴값은 1개만 가능      
+    }
+
+    // 문1) 팩토리얼값을 구하시오
+    
+    const fact = function(a) {
+      let mult=1
+      for(let i=a; i>=1; i--) {
+        mult *= i
+      }
+      return mult
+    }
+    let gop = fact(4)
+    document.write(gop)
+
+
+    // 문2) 윤년, 평년을 구하시오
+    const leap = function (a) {
+      if (a % 4 === 0 && a % 100 !== 0 || a % 400 === 0) {
+        return true    
+      } else {
+        return false
+      }     
+    }
+
+    if(leap(2023)){
+      document.write('윤년')
+    } else {
+      document.write('평년')
+    }
+  
+
+  </script>
+  
+</body>
+</html>

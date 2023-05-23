@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_지폐갯수.html</title>
+</head>
+<body>
+    <div id="demo"></div>
+
+    <script>
+        // 연습) 각 지폐갯수를 구해서 표작성해서 본문 id=demo에 출력하시오
+        let money=54320;
+        let tenThousand = parseInt(money/10000);
+        let thousand = parseInt(money%10000/1000);
+        let hundred = parseInt(money%1000/100);
+        let ten =  parseInt(money%100/10);        
+        
+        let result = "";
+        result = result + "<table border='1'>";
+
+        result = result + "<tr>";
+        result = result + "<td>만원</td>";
+        result = result + "<td>" + tenThousand + "장</td>";
+        result = result + "</tr>";
+
+        result = result + "<tr>";
+        result = result + "<td>천원</td>";
+        result = result + "<td>" + thousand + "장</td>";
+        result = result + "</tr>";
+
+        result = result + "<tr>";
+        result = result + "<td>백원</td>";
+        result = result + "<td>" + hundred + "장</td>";
+        result = result + "</tr>";
+
+        result = result + "<tr>";
+        result = result + "<td>십원</td>";
+        result = result + "<td>" + ten + "장</td>";
+        result = result + "</tr>";
+
+        result = result + "</table>"
+
+        document.getElementById("demo").innerHTML = result;
+    </script>
+    
+</body>
+</html>

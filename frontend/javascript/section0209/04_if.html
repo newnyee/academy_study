@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04_if</title>
+</head>
+<body>
+    <h3>if조건문</h3>
+    <script>
+        // 제어문
+        // 프로그램의 흐름을 제어
+        // 조건문: if문, switch문
+        // 반목문: for문, while문, do~while문
+        // break문
+        // continue문
+
+        // 성적 프로그램
+        let name="무궁화";
+        let kor=39, eng=100, mat=100;
+
+        // 총점을 구하시오
+        let total= kor + eng + mat;
+
+        // 평균을 구하시오 (소수점 제외)
+        let aver= parseInt(total/3);
+
+        // 출력
+        document.write("이름 : " + name + "<br>");
+        document.write("국어 : " + kor + "<br>");
+        document.write("영어 : " + eng + "<br>");
+        document.write("수학 : " + mat + "<br>");
+        document.write("총점 : " + total + "<br>");
+        document.write("평균 : " + aver + "<hr>");
+
+
+        // 문1) 평균 95점이상이면 장학생을 출력하시오
+        if (aver>=95) {
+            document.write("<span style='color:red;font-weight:bold'>장학생</span>");
+        }
+        document.write("<hr>");
+
+
+        // 문2) 국어점수가 70점이상이면 합격, 아니면 불합격
+        // if (kor>=70) {
+        //     document.write("합격")
+        // } else {
+        //     document.write("불합격")
+        // }
+        document.write(kor>=70 ? "합격" : "불합격");
+        document.write("<hr>");
+
+
+        // 문3) 수학점수가 90점이상이면 "A"
+        if (mat>=90) {
+            document.write("A")
+        } else if (mat>=80) {
+            document.write("B")
+        } else if (mat>=70) {
+            document.write("C")
+        } else if (mat>=60) {
+            document.write("D")
+        } else {
+            document.write("F")
+        }
+        document.write("<hr>");
+
+
+        // 문4) 과락
+        // 평균이 70점 이상이면 합격
+        // 단, 국영수 세 과목중에서 한 과목이라도 40점 미만이면 재시험
+        // 평균이 70점 미만이면 탈락
+        
+        if (aver>=70 && kor>=40 && eng>=40 && mat>=40) {
+            document.write("합격")
+        } else if (aver<70) {
+            document.write("탈락")
+        } else {
+            document.write("재시험")
+        }
+
+        // and 조건
+        // if(aver>=70) {
+        //     if(kor>=40 && eng>=40 && mat>=40) {
+        //         document.write("합격")
+        //     } else {
+        //         document.write("재시험")
+        //     }
+        // } else {
+        //     document.write("탈락")
+        // }
+        
+        // or 조건
+        // if(aver>=70) {
+        //     if(kor<40 || eng<40 || mat<40) {
+        //         document.write("재시험")
+        //     } else {
+        //         document.write("합격")
+        //     }
+        // } else {
+        //     document.write("탈락")
+        // }
+        // document.write("<hr>");
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <title>14_회원가입.html</title>
+</head>
+
+<body>
+    <h3>회/원/가/입</h3>
+    <form id="memfrm" name="memfrm">
+        이름 :
+        <input type="text" name="uname" id="uname" autofocus>
+        <!--id, name은 같이 써주는것이 좋음-->
+        <hr>
+
+        아이디 :
+        <input type="text" 
+        name="userid" 
+        id="userid" 
+        size="20" 
+        maxlength="5" 
+        placeholder="아이디를 입력해 주세요" 
+        required><!--null값 허용X-->
+        <hr>
+
+        비밀번호 :
+        <input type="password" 
+        name="userpw" 
+        id="userpw" 
+        size="20" 
+        maxlength="12" 
+        placeholder="비밀번호를 입력해 주세요" 
+        required><!--null값 허용X-->
+
+        우편번호 :
+        <input type="text" size="5" readonly><!--커서가 못 들어감-->
+        <input type="button" value="주소찾기">
+        <br>
+        나머지 주소 :
+        <input type="text">
+        <hr>
+
+        나이 :
+        <input type="radio" name="age">10대
+        <input type="radio" name="age" checked>20대
+        <input type="radio" name="age">30대
+        <!--type=radio의 name을 동일하게 주면 그룹이 생성되고 한개만 선택이 가능하게함-->
+
+        성별 :
+        <input type="radio" name="gender" value="m">남
+        <input type="radio" name="gender" value="f" checked>여
+        <hr>
+
+        취미 : 
+        <input type="checkbox" id="movie" name="movie" value="m" >영화
+        <input type="checkbox" id="cook" name="cook" value="c" >요리
+        <input type="checkbox" id="game" name="game" value="g" >게임
+     </form>
+
+     <form id="myform" name="myform">
+        <!--여는태그와 닫는태그가 있는 폼 컨트롤 요소-->
+        <button>버튼1</button>
+        <hr>
+        생년월일 :
+        <select name="myYear" id="myYear">
+            <option value="2021">2021년</option>
+            <option value="2022">2022년</option>
+            <option value="2023">2023년</option>
+        </select>
+
+        <!--multiple 속성 : ctrl이용해서 다중 선택 가능-->
+        <select name="myMonth" id="myMonth">
+            <option value="JAN">1월</option>
+            <option value="FEB">2월</option>
+            <option value="MAR">3월</option>
+            <option value="APR">4월</option>
+            <option value="MAY">5월</option>
+        </select>
+        <hr>
+        
+        배송메세지 :
+        <textarea cols="50" 
+        rows="3" 
+        maxlength="200" 
+        placeholder="200글자 이내로 입력해 주세요"></textarea>
+        <hr>
+        
+        <input type="submit" value="전송">
+        <input type="reset" value="취소">
+     </form>
+</body>
+
+</html>

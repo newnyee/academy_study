@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04_this</title>
+</head>
+<body>
+
+  <h3>this</h3>
+  <!-- 주의사항 <form>요소에서 this.form은 undefined 주의 -->
+  <form name="myform" id="myform" action="" onsubmit="return test6(this)">
+    <input type="button" value="버튼1" name="btn1" id="btn1" onclick="test1()">
+    <hr>
+
+    <input type="button" value="버튼2" name="btn2" id="btn2" onclick="test2('this')"> 
+    <hr>
+    
+    <!-- this 키워드 -->
+    <input type="button" value="버튼3" name="btn3" id="btn3" onclick="test3(this)">
+    <hr>
+
+    <!-- this.value 키워드 : 자신의 요소가 가지고 있는 실제 값(value="") -->
+    <input type="button" value="버튼4" name="btn4" id="btn4" onclick="test4(this.value)">
+    <hr>
+
+    <!-- this.form 키워드 : 자신의 요소가 속해 있는 폼 (<form name=myform>을 가리킴) -->
+    <input type="button" value="버튼5" name="btn5" id="btn5" onclick="test5(this.form)">
+    <hr>
+
+    <!-- onsubmit 이벤트는 리턴값이 true이면 전송된다 -->
+    <input type="submit" value="전송">
+    <hr>
+
+    <!-- this 키워드는 폼컨트롤 요소에서 사용 -->
+    <a href="#" onclick="test7(this)">아이티윌</a>
+    <hr>
+  </form>
+ 
+ <script>
+    // [this]
+    // 자기 자신의 요소를 가리킴
+    // 폼 컨트롤 요소에서만 사용가능
+    //   예) <a href="" onclick="test(this)"></a>
+    //       여기에서 this는 garbage값이므로 주의
+
+    const test1 = () => {
+      // name 접근 (비추)
+      let f = document.myform
+      alert(f) // [object HTMLFormElement]
+      alert(f.btn1) // [object HTMLInputElement]
+      alert(f.btn1.value) // 버튼1
+
+      // id 접근
+      alert(document.getElementById('btn1').value) // 버튼1
+    }
+
+    const test2 = (obj) => {
+      alert(obj) // this 문자열
+    }
+
+    const test3 = (obj) => {
+      alert(obj) // [object HTMLInputElement]
+      // document.getElementById('btn3') === this
+    }
+
+    const test4 = (value) => {
+      alert(value) // 버튼4
+    }
+
+    const test5 = (form) => {
+      alert(form) // [object HTMLFormElement]
+      // document.myform === this.form
+    }
+
+    const test6 = (form) => {
+      alert(form) // [object HTMLFormElement]
+    }
+
+    const test7 = (obj) => {
+      alert(obj) // http://127.0.0.1:5500/section0220/04_this.html?#
+    }
+
+  </script>
+
+</body>
+</html>

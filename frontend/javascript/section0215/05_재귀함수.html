@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05_재귀함수</title>
+</head>
+<body>
+  <h3>재귀적 함수 호출</h3>
+  <script>
+    // 재귀적 함수 호출
+    // -> 자신이 자신의 함수를 호출할 수 있다
+
+    // 팩토리얼 계산
+    const fact = function (a) {
+      if(a==0) {
+        return 1
+      } else {
+        return a*fact(a-1)
+      }
+    }
+    document.write(fact(3))
+
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05_JSON.html</title>
+</head>
+<body>
+  <h3>JSON</h3>
+  <script>
+    // [참조] https://www.w3schools.com/js/js_json_intro.asp
+    /*
+    ● XML문법
+      - 여는태그와 닫는태그로 구성
+      - custom tag(사용자 정의 태그) 기반 (태그를 커스텀해서 사용할 수 있음)
+      - 환경설정 파일 작성, 안드로이드 기반 앱개발시 View단 구성
+      예) <database>
+            <driver>OracleDriver</driver>
+            <username>system</username>
+            <password>1234</password>
+          </database>
+
+    ● JSON (JavaScript Object Notation)
+      - 문자단위 통신(비동기식 방식)에서 XML를 대체하는 포맷이다
+      - AJAX, NoSQL DB등에서 주로 사용하는 포맷(표기법)
+      - 배열을 객체화
+      예) 페이지의 더 보기 -> 댓글 더 보기를 누른다고해서 url이 변하지는 않음 : 문자단위(json)
+
+    ● JSON 기본 구조
+      - 속성:값 쌍으로 데이터가 구성되어 있다
+      - 속성(name, key, property), 값(value, data)
+      - name구성시 "" 기호는 생략가능하다
+      - {}안에 데이터를 저장한다
+      - 형식) {name:value, "name":value, 'name':value, ~~~}
+      - 예) {driver:"OracleDriver", "username":"system", password:'1234', ~~}
+    */
+
+    //1. Array 순수 배열
+    /*
+    let person = ["Jhon", "doe", 46]
+    document.write(person.length)
+    document.write("<hr>")
+    document.write(person[0])
+    document.write("<hr>")
+    document.write(person[1])
+    document.write("<hr>")
+    document.write(person[2])
+    document.write("<hr>")
+    */
+
+    /*
+    let person = []
+    person["firstName"] = "Jhon"
+    person["lastName"] = "Doe"
+    person["age"] = 46
+
+    document.write(person["firstName"])
+    document.write("<hr>")
+    document.write(person["lastName"])
+    document.write("<hr>")
+    document.write(person["age"])
+    document.write("<hr>")
+
+    document.write(person[0])
+    document.write("<hr>")
+    document.write(person[1])
+    document.write("<hr>")
+    document.write(person[2])
+    */
+
+    /*
+    // 2. JSON 변수선언
+    // 키값은 더블코테이션("") 생략 가능
+    let person = {"firstName" : "John", "lastName" : "Doe", "age" : 46}
+
+    //JavaScript 접근
+    document.write(person["firstName"])
+    document.write("<hr>")
+    document.write(person["lastName"])
+    document.write("<hr>")
+    document.write(person["age"])
+    document.write("<hr>")
+
+    //JSON 접근
+    document.write(person.firstName)
+    document.write("<hr>")
+    document.write(person.lastName)
+    document.write("<hr>")
+    document.write(person.age)
+    document.write("<hr>")
+    */
+
+    // 3. 
+    let persons=[
+      {"firstName" : "John",  "lastName" : "Doe1", "age" : 46}, 
+      {"firstName" : "Tom",   "lastName" : "Doe2", "age" : 36}, 
+      {"firstName" : "Jimmy", "lastName" : "Doe3", "age" : 26}
+    ]
+    document.write(persons.length)
+    document.write("<hr>")
+    document.write(persons[0])
+    document.write("<hr>")
+    document.write(persons[1])
+    document.write("<hr>")
+    document.write(persons[2])
+    document.write("<hr>")
+
+    for(let i=0; i<persons.length; i++) {
+      document.write(persons[i].firstName)
+      document.write("<br>")
+      document.write(persons[i].laststName)
+      document.write("<br>")
+      document.write(persons[i].age)
+      document.write("<hr>")
+    }
+
+  </script>
+</body>
+</html>

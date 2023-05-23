@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/*mystyle.css*/
+
+/* 문자 인코딩(표현방식) UTF-8
+    반드시 첫줄에 와야함 */
+
+*{
+    font-family: 궁서체;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: bold;
+} /*모든 요소들*/
+
+body{background-color: rgb(160, 150, 138);}
+
+.line{border: 1px dotted gray;}
+
+#myLayer{
+    width: 200px;
+    height: 200px;
+    background-color: aqua;
+}

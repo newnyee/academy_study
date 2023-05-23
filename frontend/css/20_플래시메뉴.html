@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>20_플래시메뉴</title>
+    </head>
+    <style>
+        .hide {
+            width: 0;
+            height: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 0;
+            line-height: 0;
+        }
+
+        #nav {
+            width: 200px;
+            margin: 0 auto;
+            background-color: silver;
+        }
+
+        #nav>ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        /* 1) 링크되는 문자열 스타일 */
+        #nav>ul>li>a {
+
+            text-decoration: none;
+            font-weight: bold;
+            color: black;
+            width: 200px;
+            height: 64px;
+            display: block;
+            text-indent: 30px; /*들여쓰기*/
+
+            /* 4) 이미지 추가 */
+            background-image: url(../images/icons.png);
+            background-repeat: no-repeat;
+            background-position: right 0;
+        }
+
+        /* 2) 링크 문자열에 마우스 오버되면 각 배경색 바꾸기 */
+        #nav>ul>li:nth-child(1)>a:hover {
+            background-color: rgb(250, 70, 160);
+        }
+        #nav>ul>li:nth-child(2)>a:hover {
+            background-color: rgb(82, 182, 221);
+        }
+        #nav>ul>li:nth-child(3)>a:hover {
+            background-color: rgb(68, 182, 68);
+        }
+        #nav>ul>li:nth-child(4)>a:hover {
+            background-color: rgb(192, 126, 230);
+        }
+
+        /* 3) 링크 문자열에 마우스 오버가 되면 다양한 스타일 적용 */
+        #nav>ul>li>a:hover {
+            color: white;
+            font-size: 16px;
+            text-shadow: 2px 2px 2px rgb(70, 70, 70);
+            width: 240px;
+            box-shadow: 2px 2px 2px rgb(70, 70, 70);
+            /* 모서리 라운드 처리 */
+            border-radius: 0 10px 10px 0;
+            /* 투명도 조정 */
+            /* opacity: 0.8; */
+            /*가로방향으로 0.5초동안 부드럽게*/
+            transition: width 0.5s ease;
+        }
+
+        /* 5) 각각 다른 이미지를 보여주기 위해 각 이미지 위쪽 여백을 조절해서 지정 */
+        #nav>ul>li:nth-child(2)>a { background-position: right -64px; }
+        #nav>ul>li:nth-child(3)>a { background-position: right -463px; }
+        #nav>ul>li:nth-child(4)>a { background-position: right -528px; }
+    </style>
+    
+    <body>
+
+        <h1 class="hide">플래시메뉴</h1>
+
+        <div id="nav">
+            <h2 class="hide">주요메뉴</h2>
+            <ul>
+                <li><a href="#">flicker</a></li>
+                <li><a href="#">twitter</a></li>
+                <li><a href="#">newsvine</a></li>
+                <li><a href="#">last.fm</a></li>
+            </ul>
+        </div>
+    
+    </body>
+</html>

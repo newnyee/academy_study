@@ -10,7 +10,7 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="../../css/main.css" rel="stylesheet" type="text/css">
-    <title>write.jsp</title>
+    <title>product_write</title>
 </head>
 <body>
     <div class="container">
@@ -29,7 +29,7 @@
                 <tr>
                     <td class="success">상품설명</td>
                     <td>
-                        <textarea class="form-control" rows="5" cols="60" name="description" style="resize: none"></textarea>
+                        <textarea class="form-control" rows="5" name="description" style="resize: none"></textarea>
                     </td>
                 </tr>
                 <tr>

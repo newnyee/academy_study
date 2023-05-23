@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07_이벤트</title>
+</head>
+
+<body onload="alert('어서와~~')">
+
+  <h3>이벤트</h3>
+
+    <!-- 서버로 해당 폼이 전송될 때 이벤트 onsubmit -->
+    <!-- onsubmit 이벤트는 해당 폼(myform)이 서버로 전송될 때 발생됨
+    return 값이 true이면 해당 폼이 전송되고, false이면 전송되지 않음 -->
+  <form name="myform" id="myform" action="ok.jsp" onsubmit="return true">
+
+    <input type="button" value="버튼1" onclick="alert('버튼1클릭')">
+    <hr>
+
+    <input type="button" value="아이티윌" onclick="location.href='https://www.itwill.co.kr'">
+    <hr>
+
+    <input type="button" value="마우스" onmouseover="alert('마우스over')" onmouseout="alert('마우스out')">
+    <hr>
+
+    <input type="text" onkeyup="alert('키보드눌렀다 뗌')">
+    <textarea name="" id="" cols="10" rows="5" onkeydown="alert('키보드누름')"></textarea>
+    <hr>
+
+    <select onchange="alert('목록 변경')">
+      <option>서울</option>
+      <option selected>제주</option>
+      <option>부산</option>
+    </select>
+    <hr>
+
+    <input type="text" onfocus="alert('커서들어옴')">  <!--커서가 텍스트 박스 안에 있는지 확인하는 이벤트-->
+    <hr>
+
+    <!-- 서버로 해당 폼이 전송될 때 이벤트 onsubmit -->
+    <input type="submit" value="전송1">
+    <button>전송2</button>
+    <input type="image" src="../../images/search.png" alt="search">
+    <hr>
+
+  </form>
+
+  <script>
+    /*
+      - 자바스크립트는 주로 이벤트를 발생시킨 후 함수를 호출함으로써 실행한다
+      - 기본 이벤트의 종류
+          onchange	  다른 객체로 바뀌었을때
+          onclick	    마우스 클릭했을때
+          onmouseover	마우스가 올려졌을때
+          onmouseout	마우스가 나갔을때
+          onkeydown	  키보드를 눌렀을때
+          onload	    문서을 불러오는 작업이 끝났을 때
+    */
+  </script>
+</body>
+
+</html>

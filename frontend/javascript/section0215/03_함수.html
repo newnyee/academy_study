@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_함수.html</title>
+</head>
+<body>
+    <h3>사용자 정의 함수</h3>
+
+    <script>
+    // 함수 작성시 고려사항
+        // 1) 매개변수가 있는지
+        // 2) 리턴값이 있는지
+
+    // document.write() ()값을 웹브라우저 본문영역 (<body>)에 출력하는 함수
+    
+    //프로시저 형태의 함수 (매개변수가 없는 함수)
+    function test1 () {
+        document.write("KOREA")
+    }
+
+    const test2 = function () {
+        document.write("SEOUL")
+    } 
+
+    test1()
+    document.write("<br>")
+
+    test2()
+    document.write("<hr>")
+
+    //수학적 함수 (매개값이 있는 함수)
+
+    const test3 = function(a) {
+        document.write(a*2)
+    }
+
+    const test4 = function(a,b,c) {
+        document.write(a+b+c)
+    }
+
+    test3(2)
+    document.write("<br>")
+
+    test4(1,2,3)
+    document.write("<hr>")
+
+    // 문) #기호를 100번 출력하기
+    const test5 = function(a,b) {
+        for(let i=0; i<b; i++) {
+            document.write(a)
+        }
+    }
+    test5("#", 100)
+
+
+    </script>
+    
+</body>
+</html>

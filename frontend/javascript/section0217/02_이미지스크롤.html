@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02_이미지스크롤</title>
+  
+  <style>
+    #mydiv{
+      position: relative;
+      left: 100px;
+      top: 10px;
+      width: 270px;  /* 이미지 3개 정도만 보이게 가로 영역 줄이기 */
+      height: 97px;
+      background-color: white;
+      overflow: hidden; /* 영역 이외의 부분은 숨기기 */
+    }
+  </style>
+  
+  <script>
+
+    // 스크롤하고자 하는 이미지를 전역변수에 저장
+    let ctnt = []
+    ctnt[0]="<img src='../../images/k1.png' width='90px'>"
+    ctnt[1]="<img src='../../images/k2.png' width='90px'>"
+    ctnt[2]="<img src='../../images/k3.png' width='90px'>"
+    ctnt[3]="<img src='../../images/k4.png' width='90px'>"
+    ctnt[4]="<img src='../../images/k5.png' width='90px'>"
+    ctnt[5]="<img src='../../images/k6.png' width='90px'>"
+    ctnt[6]="<img src='../../images/k7.png' width='90px'>"
+
+    const scroll = () => {
+      // 이미지 7장을 동시에 왼쪽여백 조정하기
+      for (let i=0; i<ctnt.length; i++) {
+        let tmp = document.getElementById("area" + i).style
+        tmp.left = parseInt(tmp.left) - 1 + "px" // 몇 px 씩 움직일지 결정
+
+      // 이미지 순환을 위해서 이미지 재배치
+        if (tmp.left === "-90px") {  // 90 + 540 = 630 (7장의 총px) 으로 맞춤
+          tmp.left = "540px"
+        }
+        // if(parseInt(tmp.left)<=-100) { // 다른풀이
+        //   tmp.left=(ctnt.length-1)*90 + "px"
+        // }
+      }
+
+      // 스크롤 속도 -> 이미지를 -1px 씩 몇초마다 옮길지
+      timer = setTimeout(scroll,15)
+    }
+
+
+    // ctnt에 저장된 이미지를 id=mydiv에 배치
+    const start = () => {
+      for(let i=0; i<ctnt.length; i++) {
+        document.write(`<div id='area${i}' style='position:absolute; top:0; left:${90*i}px'>`)
+        document.write(ctnt[i])
+        document.write("</div>")
+      }
+    // 페이지 시작 시 스크롤함수 시작 시간 설정
+      setTimeout(scroll, 1000)
+    }
+
+
+    let timer; // scroll 함수를 실행시키면 setTimeout 함수의 상태가 저장되고, killtime 함수를 실행시키면 clearTimeout() 함수가 작동되어 setTimeout 함수를 중지함
+
+
+    const killtime = () => { // 스크롤 함수의 setTimeout 해제 함수
+      clearTimeout(timer)
+    }
+
+  </script>
+
+</head>
+
+
+<body onunload="killtime()"> <!-- 현재문서에서 나갔거나 종료했을 때 작동시킬 함수 -->
+
+  <h3>이미지스크롤</h3>
+  <input type="button" value="이미지 스크롤 중지" onclick="killtime()">
+
+  <!-- 이미지가 스크롤 되는 위치 -->
+  <div id="mydiv">
+    <script> start() </script>
+  </div>
+  
+</body>
+
+</html>

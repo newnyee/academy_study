@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07_연습문제.html</title>
+</head>
+<body>
+
+    <h3>연산자 연습문제</h3>
+    
+    <script>
+
+        //문1) 임의의 정수가 짝수(2의 배수)인지 확인하시오
+        document.write("<p>문1) 임의의 정수가 짝수(2의 배수)인지 확인하시오</p>");
+        let x=4;
+        document.write(x%2==0);
+        // if (x%2 == 0) {
+        //     document.write(true);
+        // } else {
+        //     document.write(false);
+        // }
+        document.write("<hr>");
+
+
+        //문2) 임의의 정수가 3의 배수인지 확인하시오
+        document.write("<p>문2) 임의의 정수가 3의 배수인지 확인하시오</p>");
+        document.write(x%3==0);
+        // if (x%3 == 0) {
+        //     document.write(true);
+        // } else {
+        //     document.write(false);
+        // }
+        document.write("<hr>");
+
+
+        //문3) 임의의 정수가 4의 배수인지 확인하시오
+        document.write("<p>문3) 임의의 정수가 4의 배수인지 확인하시오</p>");
+        document.write(x%4==0);
+        // if (x%4 == 0) {
+        //     document.write(true);
+        // } else {
+        //     document.write(false);
+        // }
+        document.write("<hr>");
+
+
+        //문4) 해당 년도가 윤년인지 확인하시오
+        // - 4로 나누어 떨어지는 해는 윤년이다.
+        // - 하지만 100으로 나누어 떨어지는 해는 윤년이 아니다.
+        // - 하지만 400으로 나누어 떨어지는 해는 윤년이다.
+        document.write("<p>문4) 해당 년도가 윤년인지 확인하시오</p>");
+        let year = 1900;
+        document.write(year%4 ==0 && year%100!==0 || year%40==0);
+        // if (year%4 == 0 && year%100!==0) {
+        //     document.write("윤년입니다");
+        // } else if (year%400) {
+        //     document.write("윤년입니다");
+        // } else {
+        //     document.write("윤년이 아닙니다");
+        // }
+        document.write("<hr>");         
+
+
+        //문5) 임의의 정수가 2의 배수이면서 5의 배수인지 확인하시오
+        document.write("<p>문5) 임의의 정수가 2의 배수이면서 5의 배수인지 확인하시오</p>");
+        let y=5;
+        document.write(y%2==0 && y%5==0);
+        // if (x%2 && x%5) {
+        //     document.write(true);
+        // } else {
+        //     document.write(false);
+        // }
+        document.write("<hr>");  
+
+
+        //문6) 임의의 정수가 1 또는 3인지 확인하시오
+        document.write("<p>문6) 임의의 정수가 1 또는 3인지 확인하시오</p>");
+        document.write(x==1 || x==3);
+        // if (x==1 || x==3) {
+        //         document.write(true);
+        //     } else {
+        //         document.write(false);
+        //     }
+        document.write("<hr>");
+
+
+        //문7) 국어점수가 80~89 사이인지 확인하시오
+        document.write("<p>문7) 국어점수가 80~89 사이인지 확인하시오</p>")
+        let z = 86;
+        document.write(z>80 && z<89);
+        // if (x>80 && x<89) {
+        //         document.write(true);
+        //     } else {
+        //         document.write(false);
+        //     }
+        document.write("<hr>");
+
+    </script>
+</body>
+</html>

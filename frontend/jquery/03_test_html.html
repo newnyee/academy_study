@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>03_test_html.html</title>
+    <script src="jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <h3>text() 와 html() 함수</h3>
+    <button>입력</button>
+    <hr>
+    <div id="text"></div>
+    <div id="html"></div>
+    
+    <script>
+        // 본문에 있는 <button>요소 접근
+        $("button").click(()=>{
+            // alert()
+            let txt = "<img src='../images/devil.png'>"
+
+            /*
+            JavaScript
+            // HTML 요소에 "<img src='../images/devil.png'>" 문자열 그대로 들어감
+            document.getElementById("text").innerText=txt
+
+            //HTML 요소에 <img src='../images/devil.png'> 태그형태로 들어감
+            document.getElementById("html").innerHTML=txt
+            */
+
+            // jQuery
+            $("#text").text(txt) //단순문자열
+            $("#html").html(txt) //문자열이 마크업되면서(요소생성) 출력
+            
+        })
+            
+    </script>
+</body>
+</html>

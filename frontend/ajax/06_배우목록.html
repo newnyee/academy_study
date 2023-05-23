@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>06_배우목록.html</title>
+    <script src="jquery-3.6.4.min.js"></script>
+    <style>
+        #loader {
+            width: 100%;
+            height: 100%;
+            background-color: #ede9df;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background-image: url(../images/loader.gif);
+            background-repeat: no-repeat;
+            background-position: center;
+            display: none; /*기본값*/
+        }
+    </style>
+</head>
+<body>
+
+    <h3>배우 목록 보여주기</h3>
+    <div id="loader"></div>
+    <button>서버에게 요청</button>
+    <hr>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>키</th>
+                <th>몸무게</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="3">없습니다</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        $("button").click(()=>{
+            // loader 이미지 보여줌
+            $('#loader').show()
+
+            // 서버에 요청해서 응답메세지 받아오기(댓글더보기 등)
+            $.ajax('actors.json', {
+                dataType: 'json',
+                success: (result)=>{
+                    // 기존의 <tbody>값을 전부 지움
+                        $("tbody").empty()
+                        $(result).each((idx, value)=>{
+                            // jquery -> 08_요소생성.html 참조
+                            let $tr = $("<tr>")
+                            let $td1 = $("<td>").text(value.name)
+                            let $td2 = $("<td>").text(value.height)
+                            let $td3 = $("<td>").text(value.weight)
+
+                            $tr.append($td1, $td2, $td3).appendTo("tbody")
+                        })
+
+                        // 로딩되고 있는 이미지를 서서히 숨김
+                        $('#loader').fadeOut(200)
+                },
+                error: (error)=>{
+                    alert(error)
+                }
+            })
+        })
+    </script>
+  
+</body>
+</html>

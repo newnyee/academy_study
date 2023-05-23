@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>12_sticky.html</title>
+        <link rel="stylesheet" href="reset.css">
+        <style>
+            #s1 ul{background-color: yellow;}
+            #s1 li:nth-child(1){background-color: red;}
+            #s1 li:nth-child(2){background-color: green;}
+            #s1 li:nth-child(3){background-color: blue;}
+
+            /* fixed 주면 다음 요소를 덮어 버림 */
+            /* #header {
+                position: fixed;
+                height: 70px;
+                background-color: black;
+                width: 100%;
+                color: white;
+                font-size: 50px;
+                font-weight: bold;
+                text-align: center;
+            } */
+
+            #header {
+                position: sticky;
+                top: 0; /*sticky 줄 때 필수 사항 */
+                height: 70px;
+                background-color: black;
+                width: 100%;
+                color: white;
+                font-size: 50px;
+                font-weight: bold;
+                text-align: center;
+            }
+
+
+        </style>
+    </head>
+    
+    <body>
+
+        <!--붙임 위치 posotion:sticky-->
+
+        <header id="header">
+            <h1>아이티윌</h1>
+        </header>
+        <section id="s1">
+            <ul>
+                <li>서울</li>
+                <li>부산</li>
+                <li>제주</li>
+            </ul>
+        </section>
+
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+        <p>KOREA</p>
+    </body>
+</html>

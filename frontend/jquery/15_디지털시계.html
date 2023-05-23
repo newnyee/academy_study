@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>15_디지털시계.html</title>
+    <!-- jQuery import -->
+    <script src="jquery-3.6.4.min.js"></script>
+    <!-- moment 오픈소스 import -->
+    <script src="moment-with-locales.min.js"></script>
+    <style>
+        #time {
+            margin: 70px;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>moment.js 오픈소스</h3>
+    <h1 id="time"></h1>
+
+    <script>
+        
+        const showtime = () => {
+            moment.locale('ko')
+            let fullDate = moment().format("YYYY년 MM월 DD일 HH시 mm분 ss초")
+            $('#time').text(fullDate)
+        }
+
+        showtime()
+
+        setInterval(showtime,1000)
+
+    </script>
+  
+</body>
+</html>

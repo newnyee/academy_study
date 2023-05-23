@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05_성적표</title>
+</head>
+<body>
+    <h3>성적표</h3>
+    <div id="demo">
+    </div>
+
+    <script>
+        let name = "손흥민";
+        let kor=100, eng=100, mat=95;
+
+        let total = kor + eng + mat;
+        let aver = parseInt(total/3);
+
+        
+        let credit = ""
+        if (aver>=90) {
+            credit = "A"
+        } else if (aver>=80) {
+            credit = "B"
+        } else if (aver>=70) {
+            credit = "C"
+        } else if (aver>=60) {
+            credit = "D"
+        } else {
+            credit = "F"
+        }
+        // console.log(credit)
+
+
+        let pass = ""
+        if(aver>=70) {
+            if(kor<40 || eng<40 || mat<40) {
+                pass = "재시험"
+            } else {
+                pass = "합격"
+            }
+        } else {
+            pass = "탈락"
+        }
+        // console.log(pass)
+        
+
+        let star = ""
+        for (let i=1; i<=parseInt(aver/10); i++) {
+            star += "*"
+        }
+        // console.log(star)
+
+
+        let scholar = "";
+        if (aver>=95) {
+            scholar = "장학생"
+        }
+        //console.log(scholar)
+        
+        /*
+        출력결과 (표작성해서 본문 id=demo에 출력)
+                    이름    손흥민
+                    -----------------------------
+                    국어    100
+                    -----------------------------
+                    영어    100
+                    -----------------------------
+                    수학    95
+                    -----------------------------
+                    총점    235
+                    -----------------------------
+                    평균    98
+                    -----------------------------
+                            A학점                    문1) 평균 90이상 A, 80이상 B, 70이상 C, 60이상 D, 나머지는 F ~~
+                    결과    합격                     문2) 과락(합격, 재시험, 탈락)
+                            *********                문3) 평균 10점당 * 한개씩
+                            장학생                   문4) 평균 95이상 장학생
+                    -----------------------------
+        */
+
+        let result=""
+        result = result + "<table border='1'>";
+        
+        result = result + "<tr>";
+        result = result + "<th>이름</th>";
+        result = result + "<td>" + name + "</td>";
+        result = result + "</tr>";
+
+        result = result + "<tr>";
+        result = result + "<th>국어</th>";
+        result = result + "<td>" + kor + "</td>";
+        result = result + "</tr>";
+
+        result = result + "<tr>";
+        result = result + "<th>영어</th>";
+        result = result + "<td>" + eng + "</td>";
+        result = result + "</tr>";
+
+        result = result + "<tr>";
+        result = result + "<th>수학</th>";
+        result = result + "<td>" + mat + "</td>";
+        result = result + "</tr>";
+
+        result = result + "<tr>";
+        result = result + "<th>총점</th>";
+        result = result + "<td>" + total + "</td>";
+        result = result + "</tr>";
+
+        result = result + "<tr>";
+        result = result + "<th>평균</th>";
+        result = result + "<td>" + aver + "</td>";
+        result = result + "</tr>";
+
+        result = result + "<tr>";
+        result = result + "<th >결과</th>";
+        result = result + "<td>";
+        result = result + credit + "<br>";
+        result = result + pass  + "<br>";
+        result = result + star + "<br>";
+        result = result + scholar
+        result = result + "</td>";
+        result = result + "</tr>";
+
+        document.getElementById("demo").innerHTML = result;
+
+   </script>
+    
+</body>
+</html>
