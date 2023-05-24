@@ -29,6 +29,8 @@
                 <th>주문수량</th>
                 <th>주문 날짜</th>
             </tr>
+            <c:choose>
+            <c:when test="${list.size()>0}">
             <c:forEach var="map" items="${list}">
             <tr>
                 <td>${map.get("orderno")}</td>
@@ -39,6 +41,13 @@
                 <td>${map.get("orderdate")}</td>
             </tr>
             </c:forEach>
+            </c:when>
+            <c:otherwise>
+            <tr>
+                <td colspan="6">주문하신 상품이 없습니다</td>
+            </tr>
+            </c:otherwise>
+            </c:choose>
         </table>
         <div align="center">
             <input type="button" class="btn btn-success" value="쇼핑하러가기" onclick="location.href='/product/list'">
