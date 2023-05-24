@@ -10,9 +10,26 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="../../css/main.css" rel="stylesheet" type="text/css">
+    <script src="../../js/jquery-3.6.4.min.js"></script>
     <title>order_form</title>
     <script>
         const ordercheck = () => {
+
+            //받는사람
+            let deliverynm = $('#deliverynm').val()
+            if (deliverynm.length < 1) {
+                alert("받는사람 이름을 작성해주세요")
+                return false
+            }
+
+            //받는주소
+            let deliveryaddr = $('#deliveryaddr').val()
+            if (deliveryaddr.length < 1) {
+                alert("받는주소를 작성해주세요")
+                return false
+            }
+
+            //결제 확인
             if (confirm("결제 하시겠습니까?")) {
                 return true
             } else {
@@ -23,17 +40,17 @@
 </head>
 <body>
     <div class="container">
+        <div style="text-align: right">아이디 : ${sessionScope.get("s_id")}</div>
         <h3 align="center">주문서 작성</h3>
         <form method="post" action="/order/insert" onsubmit="return ordercheck()">
-            <input type="hidden" name="id" value='${sessionScope.get("s_id")}'>
             <table class="table">
                 <tr>
                     <th class="success">받는사람</th>
-                    <td><input class="form-control" type="text" name="deliverynm"></td>
+                    <td><input class="form-control" type="text" id="deliverynm" name="deliverynm"></td>
                 </tr>
                 <tr>
                     <th class="success">받는주소</th>
-                    <td><input class="form-control" type="text" name="deliveryaddr"></td>
+                    <td><input class="form-control" type="text" id="deliveryaddr" name="deliveryaddr"></td>
                 </tr>
                 <tr>
                     <th class="success">배송메세지</th>

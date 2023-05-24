@@ -21,7 +21,7 @@ public class CartCont {
         // session.getAttribute() 활용
         // 여기서는 따로 폼을 구현하지 않았기 때문에 임시로 "test"
 
-        dto.setId("itwill");
+        dto.setId("test");
         int cnt = cartDAO.cartInsert(dto);
 
         if (cnt == 1) {
@@ -40,9 +40,8 @@ public class CartCont {
         // String s_id = session.getAtrribute("s_id")
         // mav.addObject("list", cartDAO.cartlist(s_id));
 
-        String s_id = "test"; //여기서는 임시 아이디 test
+        String s_id = (String) session.getAttribute("s_id"); //여기서는 임시 아이디 test
         mav.addObject("list", cartDAO.cartlist(s_id));
-        session.setAttribute("s_id", s_id);
         return mav;
     }
 

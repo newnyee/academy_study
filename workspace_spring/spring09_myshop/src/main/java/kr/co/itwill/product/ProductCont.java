@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.util.Map;
 
@@ -57,7 +58,8 @@ public class ProductCont {
     }
 
     @RequestMapping("/list")
-    public ModelAndView list() {
+    public ModelAndView list(HttpSession session) {
+        session.setAttribute("s_id", "test");
         ModelAndView mav = new ModelAndView();
         mav.setViewName("product/list");
         mav.addObject("list", productDAO.list());

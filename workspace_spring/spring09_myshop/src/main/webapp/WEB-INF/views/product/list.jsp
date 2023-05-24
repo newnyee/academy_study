@@ -17,10 +17,15 @@
 </head>
 <body>
     <div class="container">
+        <div style="text-align: right">아이디 : ${sessionScope.get("s_id")}</div>
         <h3 align="center">상품 목록</h3>
         <p style="margin-left: 16px">
             <button class="btn btn-success" type="button" onclick="location.href='write'">상품등록</button>
             <button class="btn btn-success" type="button" onclick="location.href='list'">상품전체목록</button>
+            <c:if test='${sessionScope.get("s_id")!=null}'>
+            <input type="button" class="btn" value="주문목록보기" onclick="location.href='/order/orderdetail'">
+            <input type="button" class="btn" value="장바구니" onclick="location.href='/cart/list'">
+            </c:if>
         </p>
         <form action="search">
             <div class="col-xs-10">

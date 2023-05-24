@@ -7,11 +7,44 @@
     <select id="findOrderno" parameterType="String" resultType="kr.co.itwill.order.OrderDTO">
         SELECT *
         FROM ORDERLIST
-        WHERE ORDERNO = #{ORDERNO}
+        WHERE ORDERNO LIKE #{orderno} || '%'
     </select>
 
-    <insert id="orderInsert" parameterType="kr.co.itwill.order.OrderDTO">
+    <insert id="orderListInsert" parameterType="kr.co.itwill.order.OrderDTO">
         INSERT INTO ORDERLIST (orderno, id, totalamount, payment, deliverynm, deliveryaddr, deliverymsg, ordercheck)
         VALUES (#{orderno}, #{id}, #{totalamount}, #{payment}, #{deliverynm}, #{deliveryaddr}, #{deliverymsg}, 'I')
     </insert>
+    
+    <select id="totalAmount" parameterType="String" resultType="int">
+        SELECT SUM(PRICE*QTY)
+        FROM CART
+        WHERE ID = #{s_id}
+    </select>
+
+    <insert id="orderDetailInsert" parameterType="java.util.HashMap">
+        INSERT INTO ORDERDETAIL (ono, orderno, product_code, qty, price)
+        SELECT ORDERDETAIL_SEQ.nextval, #{orderno}, product_code, qty, price
+        FROM CART
+        WHERE ID = #{s_id}
+    </insert>
+
+    <select id="orderDetailList" parameterType="String" resultMap="detailListMap">
+        SELECT C.*, ORDERDATE
+        FROM (SELECT ORDERNO, PRODUCT_NAME, FILENAME, A.PRICE, QTY
+              FROM ORDERDETAIL A JOIN PRODUCT B
+              ON A.PRODUCT_CODE = B.PRODUCT_CODE) C
+        JOIN ORDERLIST D
+        ON C.ORDERNO = D.ORDERNO
+        WHERE ID = #{s_id}
+        ORDER BY ORDERDATE DESC
+    </select>
+
+    <resultMap id="detailListMap" type="java.util.HashMap">
+        <result column="orderno" property="orderno"/>
+        <result column="product_name" property="product_name"/>
+        <result column="filename" property="filename"/>
+        <result column="price" property="price"/>
+        <result column="qty" property="qty"/>
+        <result column="orderdate" property="orderdate"/>
+    </resultMap>
 </mapper>

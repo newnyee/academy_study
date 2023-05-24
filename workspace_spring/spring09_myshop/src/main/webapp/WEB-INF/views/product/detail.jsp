@@ -43,6 +43,7 @@
 </head>
 <body>
     <div class="container">
+        <div style="text-align: right">아이디 : ${sessionScope.get("s_id")}</div>
         <h3 align="center">상품 상세 / 상품 수정 / 상품 삭제</h3>
         <p><button class="btn btn-success" type="button" onclick="location.href='/product/list'">상품전체목록</button></p>
 

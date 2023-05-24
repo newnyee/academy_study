@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.yaml.snakeyaml.nodes.ScalarNode;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
@@ -20,15 +21,17 @@ public class CommentCont {
 
     @RequestMapping("/insert")
     @ResponseBody
-    public int commentServiceInsert(int product_code, String content) throws Exception {
+    public int commentServiceInsert(int product_code, String content, HttpSession session) throws Exception {
         CommentDTO comment = new CommentDTO();
+        String s_id = (String) session.getAttribute("s_id");
+
         comment.setProduct_code(product_code);
         comment.setContent(content);
 
         // 로그인 기능을 구현했거나 따로 댓글 작성자를 입력받는 폼이 있다면 입력 받아온 값으로 사용하면 된다.
         // session.getAttribute()
         // 따로 폼을 구현하지 않았기 때문에 임시로 wname 값에 "test" 주입
-        comment.setWname("test");
+        comment.setWname(s_id);
         return commentDAO.commentInsert(comment); //cnt>0 => insert 성공
     }
 

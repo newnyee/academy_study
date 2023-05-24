@@ -19,21 +19,21 @@
         <form name="productfrm" id="productfrm" method="post" action="insert" enctype="multipart/form-data">
             <table class="table">
                 <tr>
-                    <td class="success">상품명</td>
+                    <th class="success">상품명</th>
                     <td><input class="form-control" type="text" name="product_name"></td>
                 </tr>
                 <tr>
-                    <td class="success">상품가격</td>
+                    <th class="success">상품가격</th>
                     <td><input class="form-control" type="number" name="price"></td>
                 </tr>
                 <tr>
-                    <td class="success">상품설명</td>
+                    <th class="success">상품설명</th>
                     <td>
                         <textarea class="form-control" rows="5" name="description" style="resize: none"></textarea>
                     </td>
                 </tr>
                 <tr>
-                    <td class="success">상품사진</td>
+                    <th class="success">상품사진</th>
                     <td><input class="form-control" type="file" name="img"></td>
                 </tr>
                 <tr>

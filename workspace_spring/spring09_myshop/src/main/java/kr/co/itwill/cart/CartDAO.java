@@ -24,4 +24,8 @@ public class CartDAO {
     public int cartDelete(int cartno) {
         return sqlSession.delete("cart.delete", cartno);
     }
+
+    public int cartDeleteAll(String s_id) {
+        return sqlSession.delete("cart.deleteAll", s_id);
+    }
 }

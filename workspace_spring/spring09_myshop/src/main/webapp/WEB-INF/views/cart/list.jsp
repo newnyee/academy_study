@@ -14,14 +14,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="../../css/main.css" rel="stylesheet" type="text/css">
     <title>cart_list</title>
-    <style>
-        th {text-align: center;}
-        table { text-align: center;}
-    </style>
     <script>
         const ordercheck = () => {
-            if(confirm("주문/결제 페이지로 이동합니다.")) {
-                location.href='/order/orderform'
+            if(${list.size()<1}) {
+                alert("장바구니에 상품을 추가해주세요.")
+            } else {
+                if (confirm("주문/결제 페이지로 이동합니다.")) {
+                    location.href = '/order/orderform'
+                }
             }
         }
     </script>
@@ -29,7 +29,8 @@
 </head>
 <body>
     <div class="container">
-        <h3 style="text-align: center">장바구니 목록</h3>
+        <div style="text-align: right">아이디 : ${sessionScope.get("s_id")}</div>
+        <h3 style="text-align: center">장바구니</h3>
         <table class="table table-hover">
             <tr class="success" >
                 <th>아이디</th>
@@ -59,7 +60,7 @@
 
         <c:otherwise>
             <tr>
-               <td colspan="6">장바구니에 담긴 상품이 없습니다</td>
+               <td colspan="7">장바구니에 담긴 상품이 없습니다</td>
             </tr>
         </c:otherwise>
         </c:choose>

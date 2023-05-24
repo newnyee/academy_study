@@ -21,6 +21,10 @@
         DELETE FROM CART WHERE CARTNO = #{cartno}
     </delete>
 
+    <delete id="deleteAll" parameterType="String">
+        DELETE FROM CART WHERE ID = #{s_id}
+    </delete>
+
     <resultMap id="listRs" type="java.util.Map">
         <result column="id" property="id"/>
         <result column="cartno" property="cartno"/>
