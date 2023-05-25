@@ -22,11 +22,13 @@
     <c:choose>
     <%--주문 성공--%>
     <c:when test='${orderResult.equals("1")}'>
-        <div>주문이 완료되었습니다!</div>
-        <div><span>주문번호 : <strong>${orderno}</strong></span></div>
-        <div>
-            <input type="button" class="btn" value="쇼핑하러가기" onclick="location.href='/product/list'">
-            <input type="button" class="btn" value="주문상세보기" onclick="location.href='/order/orderdetail'">
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center">
+            <div>주문이 완료되었습니다!</div>
+            <div><span>주문번호 : <strong>${orderno}</strong></span></div>
+            <div>
+                <input type="button" class="btn" value="쇼핑하러가기" onclick="location.href='/product/list'">
+                <input type="button" class="btn" value="주문상세보기" onclick="location.href='/order/orderdetail'">
+            </div>
         </div>
     </c:when>
 
