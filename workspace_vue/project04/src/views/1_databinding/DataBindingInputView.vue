@@ -11,8 +11,8 @@
 
     <h3>숫자 바인딩</h3>
     <span>문자열 연산</span>
-    <input type="number" v-model="num1">
-    <input type="number" v-model="num2">
+    <input type="text" v-model="num1">
+    <input type="text" v-model="num2">
     <span>{{ num1+num2 }}</span>
     <br>
     <span>숫자형 연산</span>

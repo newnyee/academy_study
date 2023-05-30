@@ -49,6 +49,36 @@ const routes = [
     path: '/databinding/list',
     name: 'dataBindingList',
     component: () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/1_databinding/DataBindingListView.vue')
+  },
+  {
+    path: '/databinding/class',
+    name: 'dataBindingClass',
+    component: () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/1_databinding/DataBindingClassView.vue')
+  },
+  {
+    path: '/databinding/style',
+    name: 'dataBindingStyle',
+    component: () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/1_databinding/DataBindingStyleView.vue')
+  },
+  {
+    path: '/event/click',
+    name: 'eventClick',
+    component: () => import(/* webpackChunkName: "event", webpackPrefetch:true */ '../views/2_event/EventClickView.vue')
+  },
+  {
+    path: '/event/change',
+    name: 'eventChange',
+    component: () => import(/* webpackChunkName: "event", webpackPrefetch:true */ '../views/2_event/EventChangeView.vue')
+  },
+  {
+    path: '/event/key',
+    name: 'eventKey',
+    component: () => import(/* webpackChunkName: "event", webpackPrefetch:true */ '../views/2_event/EventKeyView.vue')
+  },
+  {
+    path: '/memolist',
+    name: 'memoList',
+    component: () => import(/* webpackChunkName: "memo", webpackPrefetch:true */ '../views/3_memo/MemoListView.vue')
   }
 ]
 
