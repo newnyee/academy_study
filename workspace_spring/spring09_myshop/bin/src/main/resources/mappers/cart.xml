@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cart">
+    <insert id="insert" parameterType="kr.co.itwill.cart.CartDTO">
+        INSERT INTO CART (CARTNO, PRODUCT_CODE, PRICE, QTY, ID)
+        VALUES (CART_SEQ.NEXTVAL, #{product_code}, #{price}, #{qty}, #{id})
+    </insert>
+
+    <select id="list" parameterType="String" resultMap="listRs">
+        SELECT ID, CARTNO, A.PRODUCT_CODE, A.PRICE, QTY, PRODUCT_NAME, FILENAME
+        FROM CART A
+        JOIN PRODUCT B
+        ON A.PRODUCT_CODE = B.PRODUCT_CODE
+        WHERE ID = #{id}
+    </select>
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM CART WHERE CARTNO = #{cartno}
+    </delete>
+
+    <delete id="deleteAll" parameterType="String">
+        DELETE FROM CART WHERE ID = #{s_id}
+    </delete>
+
+    <resultMap id="listRs" type="java.util.Map">
+        <result column="id" property="id"/>
+        <result column="cartno" property="cartno"/>
+        <result column="product_code" property="product_code"/>
+        <result column="price" property="price"/>
+        <result column="qty" property="qty"/>
+        <result column="qty" property="qty"/>
+        <result column="product_name" property="product_name"/>
+        <result column="filename" property="filename"/>
+    </resultMap>
+</mapper>
