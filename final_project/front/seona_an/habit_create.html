@@ -73,7 +73,7 @@
       <div class="content-wrap">
         <div class="content">
           <p class="content-name">기본 정보</p>
-          카테고리 선택, 프립명, 진행장소
+          카테고리 선택, 프립명, 진행장소, 해시태그(5개)
         </div>
 
         <div class="content">
@@ -84,13 +84,9 @@
         <!-- 프립 설명 -->
         <div class="content">
           <p class="content-name">프립 설명</p>
+          대표이미지 (3개)
           <!-- 썸머노트 사용 textarea -->
           <textarea id="summernote" name="editordata"></textarea>
-        </div>
-        
-        <div class="content">
-          <p class="content-name">거래정보 설명</p>
-          신청시 유의사항, 환불 규정 안내
         </div>
       </div>
     </form>
@@ -131,7 +127,20 @@
 		  maxHeight: null, // 최대 높이
 		  focus: true, // 에디터 로딩후 포커스를 맞출지 여부
 		  lang: "ko-KR", // 한글 설정
-		  placeholder: '호스트님의 상품을 소개해주세요 :)'	//placeholder 설정
+		  placeholder: '호스트님의 상품을 소개해주세요 :)',	//placeholder 설정
+      toolbar:[
+        ['fontname', ['fontname']],
+            ['fontsize', ['fontsize']],
+            ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+            ['color', ['forecolor','color']],
+            ['table', ['table']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
+            ['insert',['picture','link','video']],
+            ['view', ['codeview', 'help']]
+            ],
+        fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
+        fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
     })
   })
 </script>
