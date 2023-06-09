@@ -14061,7 +14061,7 @@ fieldset:disabled .btn {
 }
 
 .class-box>div img{
-  border-radius: 15px;
+  border-radius: 10px;
   width: 250px;
   height: 250px;
 }
@@ -14105,4 +14105,53 @@ fieldset:disabled .btn {
 .item-content {
   font-size: x-large;
   font-weight: 400;
+}
+
+.btn-div {
+  padding: 15px 25px;
+  border: 1px solid #b8b8b8;
+  border-radius: 15px;
+}
+
+.select {
+  padding: 15px 10px;
+}
+.select input[type=radio]{
+  display: none;
+}
+.select input[type=radio]+label{
+  padding: 15px 25px;
+  border-radius: 15px;
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid #b8b8b8;
+  line-height: 24px;
+  text-align: center;
+  font-weight:bold;
+  font-size:13px;
+}
+.select input[type=radio]+label{
+  color: #3d3d3d;
+}
+.select input[type=radio]:checked+label{
+  border: 1px solid #383838;
+  background-color: #b8b8b857;
+  color: #202020;
+}
+
+.input-img {
+  padding: 15px;
+}
+
+.item-name-sm {
+  width: 300px;
+}
+
+.checkbox {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.checkbox div {
+  margin-right: 20px;
 }
