@@ -1,4 +1,4 @@
--- 회원 테이블
+-- [회원 테이블]
 -- 이미지 기본값 설정 해야함
 CREATE TABLE user (
   user_id      varchar(25)   NOT NULL  primary key,  --유저 아이디
@@ -16,8 +16,18 @@ CREATE TABLE user (
   user_date    datetime      NOT NULL  DEFAULT now() --가입날짜
 );
 
+insert into user (user_id, user_pw, user_name, user_email, user_phone, user_birth, user_gender, user_img, user_size, user_date)
+values ('user-1', '1234', '유저1', 'user1@itwill.com', '010-1234-1234', '19990101', 'm', 'user-1.jpg', 200, now());
 
--- 호스트 테이블
+insert into user (user_id, user_pw, user_name, user_email, user_phone, user_birth, user_gender, user_img, user_size, user_date)
+values ('user-2', '1234', '유저2', 'user2@itwill.com', '010-1234-1235', '19980101', 'w', 'user-2.jpg', 400, now());
+
+insert into user (user_id, user_pw, user_name, user_email, user_phone, user_birth, user_gender, user_img, user_size, user_date)
+values ('user-3', '1234', '유저3', 'user3@itwill.com', '010-1234-1236', '19970101', 'w', 'user-3.jpg', 100, now());
+
+
+
+-- [호스트 테이블]
 -- 이미지 기본값 설정 해야함
 CREATE TABLE host (
   host_id        varchar(25)   NOT NULL  primary key,     --호스트 아이디
@@ -33,8 +43,15 @@ CREATE TABLE host (
   host_date      datetime      NOT NULL	 DEFAULT now()    --호스트 등록일
 );
 
+insert into host (user_id, host_name, host_phone, host_intro, host_email, host_img, host_size, host_account, host_bank, host_acholder, host_date)
+values ('user-1', 'H1', '010-1234-1234', '안녕하세요 H1 입니다', 'user1@itwill.com', 'host1.jpg', 200, '1234-12-123456', '해빗은행', '호스트1', now());
 
--- 에너지 테이블
+insert into host (user_id, host_name, host_phone, host_intro, host_email, host_img, host_size, host_account, host_bank, host_acholder, host_date)
+values ('user-2', 'H2', '010-1235-1235', '안녕하세요 H2 입니다', 'user2@itwill.com', 'host2.jpg', 400, '1234-12-123457', '해빗은행', '호스트2', now());
+
+
+
+-- [에너지 테이블]
 CREATE TABLE energy (
   energy_no       int	         NOT NULL	 auto_increment  primary key, --에너지 번호
   user_id         varchar(25)	 NOT NULL,                              --회원 아이디
@@ -43,16 +60,42 @@ CREATE TABLE energy (
   energy_sources  varchar(50)	 NOT NULL                               --에너지 출처
 );
 
+insert into energy (user_id, energy_saveuse, energy_date, energy_sources)
+values ('uesr-1', 1000, now(), '[회원가입] 적립');
 
--- 카테고리 테이블
+insert into energy (user_id, energy_saveuse, energy_date, energy_sources)
+values ('uesr-2', 1000, now(), '[회원가입] 적립');
+
+insert into energy (user_id, energy_saveuse, energy_date, energy_sources)
+values ('uesr-3', 1000, now(), '[회원가입] 적립');
+
+
+
+-- [카테고리 테이블]
 CREATE TABLE cate (
   cate_no      varchar(10)  NOT NULL  primary key, --카테고리 코드(식별코드 따로 만들어서 사용)
   cate_large   varchar(50)  NOT NULL,              --대분류
   cate_middle  varchar(50)  NOT NULL               --중분류
 );
 
+insert into cate (cate_no, cate_large, cate_middle)
+values ('s_1','스포츠', '서핑');
 
--- 콘텐츠 테이블
+insert into cate (cate_no, cate_large, cate_middle)
+values ('s_2', '스포츠', '요트');
+
+insert into cate (cate_no, cate_large, cate_middle)
+values ('s_3', '스포츠', '요가');
+
+insert into cate (cate_no, cate_large, cate_middle)
+values ('t_1', '상담', '심리상담');
+
+insert into cate (cate_no, cate_large, cate_middle)
+values ('c_1', '요리', '베이킹');
+
+
+
+-- [콘텐츠 테이블]
 -- 이미지 기본값 설정 해야함
 CREATE TABLE cont (
   cont_no        int	         NOT NULL	 auto_increment  primary key, --콘텐츠 코드
@@ -74,8 +117,12 @@ CREATE TABLE cont (
   cont_status    char(1)	     NOT NULL  DEFAULT 'Y'                  --콘텐츠 판매 상태
 );
 
+insert into cont (cate_no, host_id, cont_name, cont_place, cont_stdate, cont_endate, cont_img, cont_content, cont_hashtag1, cont_hashtag2, cont_hashtag3, cont_hashtag4, cont_hashtag5)
+values ("s_1", "user-1", "[서핑]원데이클래스", "강릉", "2022-04-10 14:00:00", "2022-05-10 00:00:00", "surfing.jpg", "서핑가보자고", "실외활동, 혼자, 20대", "실외활동, 혼자, 20대", "실외활동, 혼자, 20대", "실외활동, 혼자, 20대", "실외활동, 혼자, 20대");
 
--- 원데이클래스 테이블
+
+
+-- [원데이클래스 테이블]
 CREATE TABLE one (
   pro_no      varchar(35)	 NOT NULL  primary key, --상품코드
   cont_no     int	         NOT NULL,              --콘텐츠 코드
@@ -91,8 +138,18 @@ increment by 1
 maxvalue 999999
 cycle;
 
+insert into one(pro_no, cont_no, one_date, one_maxqty, one_price)
+values(concat('o_no',nextval(hello.sq_one)), 1, '2022-04-17 14:00', 5, 30000);
 
--- 회원권/회차권 테이블
+insert into one(pro_no, cont_no, one_date, one_maxqty, one_price)
+values(concat('o_no',nextval(hello.sq_one)), 1, '2022-04-24 14:00', 5, 30000);
+
+insert into one(pro_no, cont_no, one_date, one_maxqty, one_price)
+values(concat('o_no',nextval(hello.sq_one)), 1, '2022-08-10 15:00', 20, 30000);
+
+
+
+-- [회원권/회차권 테이블]
 CREATE TABLE prod (
   pro_no       varchar(35)  NOT NULL  primary key, --상품코드
   cont_no      int	        NOT NULL,              --콘텐츠 코드
@@ -108,8 +165,18 @@ increment by 1
 maxvalue 999999
 cycle;
 
+insert into prod(pro_no, cont_no, prod_name, prod_qty, prod_price)
+values(concat('p_no',nextval(hello.sq_prod)), 1, '1회권', 10, 10000);
 
--- 장바구니 테이블
+insert into prod(pro_no, cont_no, prod_name, prod_qty, prod_price)
+values(concat('p_no',nextval(hello.sq_prod)), 2, '2회권', 10, 20000);
+
+insert into prod(pro_no, cont_no, prod_name, prod_qty, prod_price)
+values(concat('p_no',nextval(hello.sq_prod)), 3, '3회권', 10, 30000);
+
+
+
+-- [장바구니 테이블]
 CREATE TABLE cartlist (
   cl_no    int          NOT NULL  auto_increment  primary key, --장바구니 코드
   user_id  varchar(25)  NOT NULL,                              --구매 회원 아이디
@@ -118,8 +185,18 @@ CREATE TABLE cartlist (
   cl_date  datetime     NOT NULL  DEFAULT now()                --장바구니 등록일
 );
 
+insert into cartlist(user_id, pro_no, cl_qty)
+values('user-2', 'o_no1', 5);
 
--- 주문서 테이블
+insert into cartlist(user_id, pro_no, cl_qty)
+values('user-1', 'p_no2', 1);
+
+insert into cartlist(user_id, pro_no, cl_qty)
+values('user-1', 'p_no3', 1);
+
+
+
+-- [주문서 테이블]
 CREATE TABLE pay (
   pay_no      varchar(20)  NOT NULL  primary key,  --주문서 번호(식별코드 따로 만들어서 사용)
   user_id     varchar(25)  NOT NULL,               --회원아이디
@@ -130,8 +207,19 @@ CREATE TABLE pay (
   pay_date    datetime     NOT NULL	 DEFAULT now() --주문 날짜
 );
 
+insert into pay (pay_no, user_id, pay_total, pay_point, pay_method, pay_date)
+values ('P202204130202021', 'user-2', 150000, 1000, 'C', '2022-04-13 02:02:02');
 
--- 주문 상세 테이블
+insert into pay (pay_no, user_id, pay_total, pay_point, pay_method, pay_date, pay_status)
+values ('P202207220101011', 'user-1', 18000, 0, 'C', '2022-07-22 01:01:01', 'C');
+
+insert into pay (pay_no, user_id, pay_total, pay_point, pay_method, pay_date)
+values ('P202207231833001', 'user-1', 24000, 1000, 'C', '2022-07-23 18:33:00');
+
+
+
+
+-- [주문 상세 테이블]
 CREATE TABLE payd (
   payd_no      int          NOT NULL  auto_increment  primary key, --주문 상세 번호
   pay_no       varchar(20)  NOT NULL,                              --주문서 번호
@@ -144,8 +232,18 @@ CREATE TABLE payd (
   refn_status  char(3)      NOT NULL  DEFAULT 'RO'                 --환불 상태
 );
 
+insert into payd (pay_no, user_id, pro_no, payd_price, payd_qty, payd_date)
+values ('P202204130202021','user-2', 'o_no1', 30000, 5, '2022-04-13 02:20:02');
 
--- 환불 테이블
+insert into payd (pay_no, user_id, pro_no,refn_status,  payd_price, payd_qty,payd_status, payd_date)
+values ('P202207220101011','user-1', 'p_no2','FRO', 18000, 1,'C' ,'2022-07-22 01:01:01');
+
+insert into payd (pay_no, user_id, pro_no, payd_price, payd_qty,payd_status, payd_date)
+values ('P202207231833001','user-1', 'p_no3', 24000, 1,'Y' ,'2022-07-23 18:33:00');
+
+
+
+-- [환불 테이블]
 CREATE TABLE refn (
   refn_no      int	        NOT NULL	auto_increment  primary key, --환불코드
   payd_no      int	        NOT NULL,                              --주문상세번호
@@ -158,8 +256,12 @@ CREATE TABLE refn (
   refn_date    datetime	    NOT NULL	DEFAULT now()                --환불 날짜
 );
 
+insert into refn (payd_no, user_id, pro_no, refn_pay, refn_point, refn_method, refn_date, refn_qty)
+values (2, 'user-1', 'p_no2', 18000, 0, 'C', '2022-07-23 17:30:00' , 1);
 
--- 정산 테이블
+
+
+-- [정산 테이블]
 CREATE TABLE calc (
   calc_no        varchar(35)	  NOT NULL  primary key,  --정산 코드(식별코드 따로 만들어서 사용)
   host_id        varchar(25)	  NOT NULL,               --호스트 아이디
@@ -171,8 +273,15 @@ CREATE TABLE calc (
   calc_addate    datetime	      NOT NULL  DEFAULT now() --정산 등록일
 );
 
+insert into calc (calc_no, host_id, calc_date, calc_title, calc_ttlprice, calc_fee, calc_addate)
+values ('C202205100000001', 'uesr-1', '2022.04.10 - 2022.05.09', '[서핑]원데이클래스 정산총액', 150000, 30000, now());
 
--- 정산 상세 테이블
+insert into calc (calc_no, host_id, calc_date, calc_title, calc_ttlprice, calc_fee, calc_addate)
+values ('C202208200000001', 'uesr-2', '2022.07.20 - 2022.08.19', '[심리상담] 1:1 상담 회차권 판매', 48000, 9600, now());
+
+
+
+-- [정산 상세 테이블]
 CREATE TABLE calcd (
   calcd_no      int	         NOT NULL	 auto_increment  primary key, --정산 상세 코드
   calc_no       varchar(35)	 NOT NULL,                              --정산 코드
@@ -184,8 +293,15 @@ CREATE TABLE calcd (
   calcd_date    varchar(35)	 NOT NULL                               --결제 날짜
 );
 
+insert into calcd (calc_no, payd_no, pro_no, calcd_price, calcd_qty, calcd_status, calcd_date)
+values ('C202205100000001', 1, 'o_no1', 30000, 5, 'Y', '2022.4.13 2:02:02');
 
--- 문의 테이블
+insert into calcd (calc_no, payd_no, pro_no, calcd_price, calcd_qty, calcd_status, calcd_date)
+values ('C202208200000001', 2, 'p_no2', 18000, 1, 'R', '2022.7.22 1:01:01');
+
+
+
+-- [문의 테이블]
 CREATE TABLE question (
   q_no        int          NOT NULL  auto_increment  primary key, --문의 번호
   cont_no     int          NOT NULL,                              --콘텐츠 코드
@@ -196,8 +312,15 @@ CREATE TABLE question (
   q_div       char(1)      NOT NULL                               --구분코드(U:회원, H:호스트)
 );
 
+insert into question (cont_no, user_id, q_question, q_bedate, q_group, q_div)
+values (1, 'user-2', '최대 참석인원이 5명인가요?', now(),(SELECT ifnull(max(q_no),0)+1 FROM question as qs), 'U' );
 
--- 리뷰 테이블
+insert into question (cont_no, user_id, q_question, q_bedate, q_group, q_div)
+values (1, 'user-1', '네 맞습니다', now(),1, 'H' );
+
+
+
+-- [리뷰 테이블]
 CREATE TABLE review (
   review_no       int	         NOT NULL	 auto_increment  primary key, --리뷰 코드
   user_id         varchar(25)	 NOT NULL,                              --유저 아이디
@@ -212,24 +335,51 @@ CREATE TABLE review (
   review_status   char(1)	     NOT NULL 	DEFAULT 'Y'                 --리뷰 상태(Y:리뷰 게시중, N:리뷰 삭제)
 );
 
--- 찜 테이블
+insert into review(user_id, cont_no, payed_no, review_date, review_cont, review_star, review_img, review_imgSize, review_ask, review_status)
+VALUES ('user-2', '1', 1, now(), 'This is a review.', 5, 'review_img', 200, '친구', 'Y');
+
+insert into review(user_id, cont_no, payed_no, review_date, review_cont, review_star, review_img, review_imgSize, review_ask, review_status)
+VALUES ('user-1', '2', 3, now(), 'is a review.', 5, 'review_img2', 200, '혼자', 'Y');
+
+insert into review(user_id, cont_no, payed_no, review_date, review_cont, review_star, review_img, review_imgSize, review_ask, review_status)
+VALUES ('user-3', '2', 4, now(), '리뷰합니다', 4, 'review_img3', 200, '혼자', 'N');
+
+insert into review(user_id, cont_no, payed_no, review_date, review_cont, review_star, review_img, review_imgSize, review_ask, review_status)
+VALUES ('user-3', '3', 5, now(), '리뷰리뷰', 4, 'review_img4', 200, '연인', 'Y');
+
+
+
+-- [찜 테이블]
 CREATE TABLE zzim (
   zzim_no  int	        NOT NULL  auto_increment  primary key, --찜 코드
   user_id  varchar(25)	NOT NULL,                              --유저 아이디
   cont_no  int	        NOT NULL                               --콘텐츠 코드
 );
 
+INSERT INTO zzim (user_id, cont_no) VALUES ('user-2', '1');
+
+INSERT INTO zzim (user_id, cont_no) VALUES ('user-3', '3');
 
 
--- 키워드 수집 테이블
+
+-- [키워드 수집 테이블]
 CREATE TABLE reco (
   reco_no       int	         NOT NULL 	auto_increment  primary key, --키워드 코드
   reco_keyword  varchar(50)	 NOT NULL,                               --키워드
   reco_date     datetime	   NOT NULL	  DEFAULT now()                --키워드 생성일
 );
 
+insert into reco (reco_keyword, reco_date) values ("서핑", now());
 
--- 설문조사 테이블
+insert into reco (reco_keyword, reco_date) values ("상담", now());
+
+insert into reco (reco_keyword, reco_date) values ("휘낭시에", now());
+
+insert into reco (reco_keyword, reco_date) values ("휘낭시에", now());
+
+
+
+-- [설문조사 테이블]
 CREATE TABLE survey (
   user_id   varchar(25)	 NOT NULL  primary key,  --유저 아이디
   ask_1     varchar(20)	 NOT NULL,               --질문1
@@ -239,3 +389,9 @@ CREATE TABLE survey (
   ask_5     varchar(20)	 NOT NULL,               --질문1
   ask_date  datetime	   NOT NULL	 DEFAULT now() --설문 참여일
 );
+
+insert into survery (user_id, ask_1, ask_2, ask_3, ask_4, ask_5)
+values ("user-3", "남자", "30대이하", "실외활동", "혼자", "7만원미만");
+
+insert into survery (user_id, ask_1, ask_2, ask_3, ask_4, ask_5)
+values ("user-2", "여자", "40대이하", "실내활동", "혼자", "7만원미만");

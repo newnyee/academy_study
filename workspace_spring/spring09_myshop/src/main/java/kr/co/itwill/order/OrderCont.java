@@ -79,9 +79,8 @@ public class OrderCont {
         }
         mav.setViewName("/order/orderResult");
         return mav;
-
-
     }
+
     @RequestMapping("/orderdetail")
     public ModelAndView orderDetailList (HttpSession session) {
         ModelAndView mav = new ModelAndView();
